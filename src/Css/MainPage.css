@@ -1,0 +1,88 @@
+.main {
+  width: 100%;
+  padding-top: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.VerticalImge {
+  width: 100%;
+  height: 100%;
+  border-radius: 4%;
+}
+
+.HorizontalImge {
+  width: 100%;
+  border-radius: 4%;
+}
+
+.HorizontalImge2 {
+  width: 100%;
+  border-radius: 4%;
+  margin-top: 5%;
+}
+
+.category {
+  font-size: larger;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#iconCenter {
+  margin-top: 35%;
+}
+
+.setcolor {
+  font-family: FontAwesome, IranSans;
+  resize: none;
+  border: 0px solid;
+  height: 100%;
+  width: 85%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.shopRow{
+  padding-top: 2%;
+}
+
+.shopCard {
+  font-family: FontAwesome, IranSans;
+  resize: none;
+  border: 0px solid;
+  height: 100%;
+  width: 85%;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  text-align: center;
+  margin: auto;
+  border: 1px solid white;
+  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+#shopCardName{
+  margin-left: 10%;
+  text-align: left;
+}
+
+#shopCardPrice{
+  float: left;
+  margin-left: 10%;  
+  margin-top:10%;
+}
+
+
+#titleCategories {
+  margin-top: 15%;
+  font-size: medium;
+  color: rgb(165, 169, 196);
+}

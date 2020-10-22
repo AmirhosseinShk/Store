@@ -1,0 +1,51 @@
+.header{
+	overflow: hidden;
+	width:100%;
+	padding-top:2.5%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.headerImage{
+	margin-left: 1%;
+}
+
+.searchBorder {
+	margin-left: 7%;
+	margin-top: 1%;
+}
+
+.SelectZone {
+    font-family: FontAwesome , IranSans;
+	font-size: 16px;
+	height: 100%;
+	width: 100%;
+	resize: none;
+	border: 0px solid;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	background-color : #F6F6F6;	
+}
+
+input[type="text"], input[type="password"], textarea, select { 
+    outline: none;
+}
+.SearchButton{
+	position: relative; 
+	border: 1px solid lightgray;
+	width: 45%;
+	height: 100%;
+	margin-left: 10%;
+	border-bottom-left-radius: 18px;
+	border-top-left-radius: 18px;
+	border-bottom-right-radius: 18px;
+	border-top-right-radius: 18px;
+	background-color: #651FFF;    
+}
+
+.MenuBar{
+	padding-left: 37%;
+	font-size: 30px;
+}
