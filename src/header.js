@@ -1,9 +1,7 @@
 import React from "react";
-import "./Css/Header.css";
-import "./Css/global.css";
+import "./asstes/css/Header.css";
+import "./asstes/css/global.css";
 import testShop from "./shopTest.png";
-import "bootstrap/dist/css/bootstrap.css";
-import "./Css/fontawesome-free-5.15.1-web/css/all.css";
 
 export default () => {
   return (

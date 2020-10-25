@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './Css/index.css';
+import './asstes/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import "./asstes/css/fontawesome-free-5.15.1-web/css/all.css";
+import 'mdbreact/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+import 'mdbreact/dist/css/style.css';
+import "./asstes/css/carousel.css";
 
 ReactDOM.render(
   <React.StrictMode>
