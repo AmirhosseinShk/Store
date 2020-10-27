@@ -1,28 +1,61 @@
-@import url("fontiran.css"); 
+@import url("fontiran.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
-html , body{
-    max-width: 100%;
-	overflow-x: hidden;
-	font-family: IRANSans;
-	font-weight:200;
-	min-height: 100%;
-	height: auto;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: IRANSans;
+  font-weight: 200;
+  min-height: 100%;
+  height: auto;
 }
 
-
-a{
-	color: black;
+a {
+  color: black;
 }
 
-.deleteUnderLink{
-	text-decoration: none !important;
+.deleteUnderLink {
+  text-decoration: none !important;
 }
 
-.tab{
-	margin-right : 5vw;
+.tab {
+  margin-right: 5vw;
 }
 
-.doubletab{
-	margin-right : 10vw;
+.doubletab {
+  margin-right: 10vw;
+}
+
+.flickity-enabled {
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.flickity-button {
+  border: 1px solid #fff !important;
+  background: #efeeee !important;
+  border-radius: 20% !important;
+  width: 4% !important;
+  height: 18% !important;
+  text-align: right;
+}
+
+.flickity-button-icon {
+  left: 10% !important;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 80% !important;
+  height: 80% !important;
+}
+
+.next {
+	text-align: left !important;
+}
+
+.flickity-viewport {
+  overflow-x: clip !important;
+  overflow-y: inherit !important;
 }

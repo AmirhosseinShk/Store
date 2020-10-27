@@ -6,7 +6,9 @@ import Footer from './footer.js';
 function main() {
     return (
     <Fragment>
+        <Header></Header>
         <MainPage></MainPage>
+        <Footer></Footer>
      </Fragment>    
     );
 }

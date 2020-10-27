@@ -4,25 +4,26 @@ import LargeHorizontal from "./2.PNG";
 import Vertical from "./1.PNG";
 import SmallHorizontal from "./3.png";
 import carpet from "./carpet.PNG";
-import "./asstes/css/carousel.css";
-import "mdbreact/dist/js/jquery";
-import "mdbreact/dist/js/popper";
-import "mdbreact/dist/js/bootstrap";
-import "mdbreact/dist/js/mdb";
+import carpet2 from "./carpet2.PNG";
+import Flickity from "react-flickity-component";
+import "flickity/css/flickity.css";
 
-import {
-  MDBCarousel,
-  MDBCarouselInner,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardImage,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBBtn,
-} from "mdbreact";
+const flickityOptions = {
+  initialIndex: 0,
+  accessibility: true,
+  cellAlign: "left",
+  dragThreshold: 3,
+  freeScrollFriction: 2,
+  percentPosition: true,
+  resize: true,
+  draggable: true,
+  pageDots: false,
+  setGallerySize: true,
+  // prevNextButtons: false,
+  // namespaceJQueryEvents: true,
+   arrowShape: { x0: 10, x1: 40, y1: 30, x2: 50, y2: 30, x3: 20 },
+  //pauseAutoPlayOnHover: false,
+};
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class MainPage extends React.Component {
             ></img>
             <div class="row">
               <div class="col-9">
-                <h2 class="category">Categories</h2>
+                <h4 class="category">Categories</h4>
                 <div class="row">
                   {this.state.Categories.map((item) => (
                     <div class="col-3">
@@ -75,220 +76,56 @@ class MainPage extends React.Component {
           </div>
         </div>
         <div className="recent">
-          <h4>Most Recent</h4>
-          <MDBCarousel
-            activeItem={1}
-            length={2}
-            slide={true}
-            showControls={true}
-            showIndicators={false}
-            multiItem
+          <h4>Most recent</h4>
+          <Flickity
+            className={"carousel"} // default ''
+            elementType={"div"} // default 'div'
+            options={flickityOptions} // takes flickity options {}
+            disableImagesLoaded={false} // default false
+            reloadOnUpdate // default false
+            static={true} // default false
           >
-            <MDBCarouselInner>
-              <MDBRow>
-                <MDBCarouselItem itemId="1">
-                  <MDBCol md="3">
-                    <MDBCard className="mb-2">
-                      <MDBCardImage
-                        className="img-fluid"
-                        src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                      />
-                      <MDBCardBody>
-                        <MDBCardTitle>MDBCard title</MDBCardTitle>
-                        <MDBCardText>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </MDBCardText>
-                        <MDBBtn color="primary">MDBBtn</MDBBtn>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBCol>
-                </MDBCarouselItem>
-                <MDBCarouselItem itemId="2">
-                  {this.state.Categories.map((item) => (
-                    <MDBCol md="3">
-                      <div class="card shopCard">
-                        <p id="shopCardName">{item.Name}</p>
-                        <img src={carpet}></img>
-                        <div className="row">
-                          <span id="shopCardPrice">785.000 ₽</span>
-                          <button className="ml-auto mr-3" id="shopCardButton">
-                            test
-                          </button>
-                        </div>
-                      </div>
-                    </MDBCol>
-                  ))}
-                </MDBCarouselItem>
-              </MDBRow>
-            </MDBCarouselInner>
-          </MDBCarousel>
-          <h4>TESTTTTTTT</h4>
-          <div
-            id="carousel-example-multi"
-            class="carousel slide carousel-multi-item v-2"
-            data-ride="carousel"
-          >
-            <div class="controls-top">
-              <a
-                class="btn-floating"
-                href="#carousel-example-multi"
-                data-slide="prev"
-              >
-                <i class="fas fa-chevron-left"></i>
-              </a>
-              <a
-                class="btn-floating"
-                href="#carousel-example-multi"
-                data-slide="next"
-              >
-                <i class="fas fa-chevron-right"></i>
-              </a>
-            </div>
-
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carousel-example-multi"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li data-target="#carousel-example-multi" data-slide-to="1"></li>
-              <li data-target="#carousel-example-multi" data-slide-to="2"></li>
-              <li data-target="#carousel-example-multi" data-slide-to="3"></li>
-              <li data-target="#carousel-example-multi" data-slide-to="4"></li>
-              <li data-target="#carousel-example-multi" data-slide-to="5"></li>
-            </ol>
-
-            <div class="carousel-inner v-2" role="listbox">
-              <div class="carousel-item active">
-                <div class="col-12 col-md-4">
-                  <div class="card mb-2">
-                    <img
-                      class="card-img-top"
-                      src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title font-weight-bold">Card title</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                      <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-12 col-md-4">
-                  <div class="card mb-2">
-                    <img
-                      class="card-img-top"
-                      src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title font-weight-bold">Card title</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                      <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-12 col-md-4">
-                  <div class="card mb-2">
-                    <img
-                      class="card-img-top"
-                      src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title font-weight-bold">Card title</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                      <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-12 col-md-4">
-                  <div class="card mb-2">
-                    <img
-                      class="card-img-top"
-                      src="https://mdbootstrap.com/img/Photos/Others/img (29).jpg"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title font-weight-bold">Card title</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                      <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-12 col-md-4">
-                  <div class="card mb-2">
-                    <img
-                      class="card-img-top"
-                      src="https://mdbootstrap.com/img/Photos/Others/img (30).jpg"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title font-weight-bold">Card title</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                      <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-12 col-md-4">
-                  <div class="card mb-2">
-                    <img
-                      class="card-img-top"
-                      src="https://mdbootstrap.com/img/Photos/Others/img (27).jpg"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title font-weight-bold">Card title</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                      <a class="btn btn-primary btn-md btn-rounded">Button</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <div class="row shopRow">
-            <button className="col-1">test</button>
             {this.state.Categories.map((item) => (
-              <div class="col">
+              <div className="col-md-3 cardMargin">
                 <div class="shopCard">
                   <p id="shopCardName">{item.Name}</p>
-                  <img src={carpet}></img>
-                  <span id="shopCardPrice">785.000 ₽</span>
+                  <img id="shopCardImage" src={carpet2}></img>
+                  <div className="row shopCardRow">
+                    <span id="shopCardPrice">785.000 ₽</span>
+                    <button className="ml-auto mr-3" id="shopCardButton">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
-            <button className="col-1">test</button>
-          </div> */}
+          </Flickity>
+        </div>
+        <div className="popular">
+          <h4>Popular products</h4>
+          <Flickity
+            className={"carousel"} // default ''
+            elementType={"div"} // default 'div'
+            options={flickityOptions} // takes flickity options {}
+            disableImagesLoaded={false} // default false
+            reloadOnUpdate // default false
+            static // default false
+          >
+            {this.state.Categories.map((item) => (
+              <div className="col-md-3 cardMargin">
+                <div class="shopCard">
+                  <p id="shopCardName">{item.Name}</p>
+                  <img id="shopCardImage" src={carpet}></img>
+                  <div className="row shopCardRow">
+                    <span id="shopCardPrice">785.000 ₽</span>
+                    <button className="ml-auto mr-3" id="shopCardButton">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Flickity>
         </div>
       </div>
     );

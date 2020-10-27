@@ -23,7 +23,6 @@
 }
 
 .category {
-  font-size: larger;
   margin-top: 2%;
   margin-bottom: 2%;
 }
@@ -38,17 +37,15 @@
   border: 0px solid;
   height: 100%;
   width: 85%;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  border-radius: 15px;
+  background-color: #f6f6f6;
   text-align: center;
   margin: auto;
   margin-top: 10%;
 }
 
-.shopRow{
-  padding-top: 2%;
+.recent {
+  margin-top: 5%;
 }
 
 .shopCard {
@@ -56,33 +53,48 @@
   resize: none;
   border: 0px solid;
   height: 100%;
-  width: 85%;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
+  width: 90%;
+  border-radius: 25px;
   text-align: center;
   margin: auto;
-  border: 1px solid white;
-  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-#shopCardName{
+.shopCardRow {
+  margin-top: 5%;
+}
+
+.popular {
+  margin-top: 5%;
+}
+
+#shopCardImage {
+  width: inherit;
+}
+
+#shopCardName {
+  padding-top: 10%;
   margin-left: 10%;
   text-align: left;
+  font-size: 20px;
 }
 
-#shopCardPrice{
+#shopCardPrice {
   float: left;
-  margin-left: 10%;  
+  margin-left: 10%;
+  font-weight: lighter;
+  color: gray;
 }
 
-#shopCardButton{
+#shopCardButton {
   float: right;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #651fff;
 }
-
 
 #titleCategories {
   margin-top: 15%;
