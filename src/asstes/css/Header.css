@@ -49,3 +49,53 @@ input[type="text"], input[type="password"], textarea, select {
 	padding-left: 37%;
 	font-size: 30px;
 }
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	overflow-x: hidden;
+	transition: 0.5s;
+	background-color: rgb(255, 255, 255);
+   	margin: auto;
+  }
+  
+
+  
+  .closebtn {
+	margin-top: 10%;
+	margin-left: 82%;
+  }
+
+  #blur   {
+	filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+}
+
+.ShowMenu{
+	margin-top: 20%;
+	padding-left: 20%;
+}
+
+
+h3{
+    color: rgb(101, 35, 255);
+}
+
+
+
+.nextrow{
+	margin-top:35%;
+	padding-left: 20%;
+}
+
+.item{
+	color: rgb(178, 180, 185);
+}
+
