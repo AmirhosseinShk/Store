@@ -1,0 +1,321 @@
+
+.main{
+  width: 100%;
+  height: auto;
+  padding-top: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10%;
+  background-color: rgb(247, 247, 247);
+
+}
+
+.shopCard {
+    font-family: FontAwesome, IranSans;
+    resize: none;
+    border: 0px solid;
+    height: 100%;
+    width: auto;
+    border-radius: 25px;
+    text-align: center;
+    margin: auto;
+    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  #shopCardImage {
+    width: auto;
+  }
+
+
+  #shopCardButton {
+    float: left;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #651fff;
+  }
+
+  #butplus{
+    color:white
+  }
+
+  .productDetail{
+      background-color: white;
+      width: 100%;
+      padding-top: 2.5%;
+      padding-left: 2%;
+      padding-right: 2%;
+  }
+
+  .producePhoto{
+    padding-bottom: 20%;
+    background-color: white;
+    
+  }
+
+  .productText{
+      padding-left: 8%;
+  }
+
+  .setBrand{
+      margin-top: 15%;
+      margin-bottom: 5%;
+  }
+
+  .setInventory{
+      padding-left: 20%;
+  }
+
+  .setSize{
+      margin-top: 5%;
+  }
+
+  .selectBox{
+      margin-top: 5%;
+      width:50%;
+      padding-bottom: 6%;
+      border: none;
+      text-align: center;
+      color: rgb(104, 31, 255);
+      border-radius: 4%;
+
+  }
+
+.colorText{
+    color: rgb(165, 167, 175);
+}
+
+ #shopCardButton2 {
+    float: right;
+    margin:0;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: #651fff;
+  }
+
+
+  .checkbox{
+    width: 40%;
+      margin-left: 2%;
+      margin-top: 3%;
+  }
+
+  .radioBox{
+    margin-right: 2%;
+  }
+
+  .radioMaster{
+    margin-left: 12%;
+  }
+
+  .button_price{
+    margin-bottom: 2%;
+    margin-top: 3%;
+    width: 80%;
+    height: 15%;
+    border-radius: 20px;
+    color: rgb(111, 32, 254);
+    border-color: rgb(111, 32, 254);
+  }
+
+  .button_order{
+    width: 80%;
+    height: 15%;
+    border-radius: 20px;
+    background-color: rgb(111, 32, 254);
+    border-color: rgb(111, 32, 254);
+    color: white;
+  }
+
+  .payment{
+    background-color: white;
+  }
+
+  .paymentMethod{
+    margin-top: 10%;
+    margin-left: 10%;
+  }
+
+  .specifaction{
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+
+  .Specifactions{
+    margin-right: 5%;
+    margin-bottom: 5%;
+   border-radius: 25px;
+    width: 85%;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    background-color: white;
+  }
+
+  .title{
+    font-size: larger;
+    padding-left: 10%;
+
+  }
+
+ .specifactionItem{
+   padding-left: 68%;
+   color:rgb(165, 167, 175)
+
+ }
+
+ .popular {
+  margin-top: 5%;
+}
+
+#priceDetail{
+  height: 50%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 30%;
+  right: 35%;
+  border-radius: 25px;
+	overflow-x: hidden;
+	transition: 0.5s;
+  background-color: rgb(255, 255, 255);
+}
+
+.shadowbackground{
+  box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.6), 8px 6px 20px 50px rgba(0, 0, 0, 0.19);
+}
+
+
+
+#blur   {
+  filter:brightness(200%);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    
+}
+
+.items{
+  margin-left: 38%;
+}
+
+.price{
+  color:rgb(111, 32, 255);
+  margin-left: 1%;
+}
+
+.titlePriceDetails{
+  margin-left: 38%;
+  margin-bottom: 2%;
+
+}
+
+.lineTotal{
+  margin-top: 5%;
+  margin-right: 45%;
+  width: 30%;
+ color: black;
+}
+
+.totalamount{
+  margin-left: 33%;
+}
+
+#Order{
+  height: 80%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 10%;
+  right: 35%;
+  border-radius: 25px;
+	overflow-x: hidden;
+	transition: 0.5s;
+  background-color: rgb(255, 255, 255);
+}
+
+.pay{
+  margin-top: 15%;
+  margin-left: 24%;
+  margin-bottom: 5%;
+  background-color: rgb(105, 31, 255);
+  color: white;
+  width: 50%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 25px;
+}
+
+.ItemOrder{
+  margin-top: 25%;
+}
+
+.formRegister{
+  padding-left: 8%;
+}
+
+.addinformation{
+  width: 100%;
+  margin-top: 10%;
+  margin-left: 0%;
+}
+
+.closebtn {
+	margin-top: 10%;
+	margin-left: 82%;
+  }
+
+.inputs{
+  width:70%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  border: none;
+  border-radius: 5px;
+}
+
+.inputs:focus{
+  background-color: white;
+  color: black;
+  border-color: red;
+
+}
+
+.inputsAddress{
+  display: block;
+  width:70%;
+  rows :4;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  border: none;
+  border-radius: 5px;
+  
+}
+
+.inputsAddress:focus{
+  background-color: white;
+  color: black;
+  border-color: red;
+
+}
+
+#test{
+  height: 80%;
+  width:35%;
+	position: fixed;
+	z-index: 1;
+  border-radius: 25px;
+	overflow-x: hidden;
+	transition: 0.5s;
+  background-color: rgb(255, 255, 255);
+}
+
+
