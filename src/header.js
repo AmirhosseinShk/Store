@@ -2,6 +2,8 @@ import React from "react";
 import "./asstes/css/Header.css";
 import "./asstes/css/global.css";
 import testShop from "./shopTest.png";
+import "./asstes/icons/fontello/css/fontello.css";
+
 
 export default class header extends React.Component {
   constructor(props) {
@@ -52,7 +54,7 @@ export default class header extends React.Component {
             ></input>
             <div className=" col-3">
               <button className="SearchButton" type="submit">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas icon-cart" id="SearchButtonicon"></i>
               </button>
             </div>
           </div>
