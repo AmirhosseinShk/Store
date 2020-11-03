@@ -7,6 +7,7 @@ import carpet from "./carpet.PNG";
 import carpet2 from "./carpet2.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
+import "./asstes/icons/fontello/css/fontello.css";
 
 const flickityOptions = {
   initialIndex: 0,
@@ -21,7 +22,7 @@ const flickityOptions = {
   setGallerySize: true,
   // prevNextButtons: false,
   // namespaceJQueryEvents: true,
-   arrowShape: { x0: 10, x1: 40, y1: 30, x2: 50, y2: 30, x3: 20 },
+  arrowShape: { x0: 10, x1: 40, y1: 30, x2: 50, y2: 30, x3: 20 },
   //pauseAutoPlayOnHover: false,
 };
 
@@ -30,10 +31,10 @@ class MainPage extends React.Component {
     super(props);
     this.state = {
       Categories: [
-        { icon: "fa fa-phone fa-3x", Name: "Carpet" },
-        { icon: "fa fa-shopping-bag fa-3x", Name: "Bags" },
-        { icon: "fa fa-tshirt fa-3x", Name: "Clothes" },
-        { icon: "fa fa-phone fa-3x", Name: "Handicrafts" },
+        { icon: "fa icon-carpet", Name: "Carpet" },
+        { icon: "fa icon-hand-bag", Name: "Bags" },
+        { icon: "fa icon-jacket", Name: "Clothes" },
+        { icon: "fa icon-page-1", Name: "Handicrafts" },
       ],
     };
   }

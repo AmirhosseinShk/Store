@@ -32,17 +32,20 @@
 input[type="text"], input[type="password"], textarea, select { 
     outline: none;
 }
-#SearchButton{
+
+.SearchButton{
 	position: relative; 
 	border: 1px solid lightgray;
 	width: 45%;
 	height: 100%;
 	margin-left: 10%;
-	border-bottom-left-radius: 18px;
-	border-top-left-radius: 18px;
-	border-bottom-right-radius: 18px;
-	border-top-right-radius: 18px;
+	border-radius: 14px;
 	background-color: #651FFF;    
+}
+
+#SearchButtonicon{
+	color: white;
+	font-size: 20px;
 }
 
 .MenuBar{
