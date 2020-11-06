@@ -48,6 +48,21 @@
     color: rgb(165, 167, 175);
 }
 
+#shopCardButtonDetail {
+  float: left;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #651fff;
+}
+
+#shopCardImageDetail {
+  width: inherit;
+}
+
+
  #shopCardButton2 {
     float: right;
     margin:0;
@@ -114,7 +129,7 @@
     width: 85%;
     padding-top: 3%;
     padding-bottom: 2%;
-    background-color: white;
+    box-shadow: 5px 5px 5px 5px #888888
   }
 
   .title{
@@ -278,5 +293,6 @@
 	transition: 0.5s;
   background-color: rgb(255, 255, 255);
 }
+
 
 

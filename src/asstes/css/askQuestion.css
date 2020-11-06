@@ -1,0 +1,77 @@
+.main {
+    width: 100%;
+    padding-top: 2.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .IconAskQuestion{
+      margin-left: 35%;
+      margin-top: 23%;
+      margin-bottom: 15%;
+  }
+
+  .textAskQuestion{
+      margin-top: 10%;
+  }
+
+  .pAskQuestion{
+    color:rgb(165, 169, 198);
+  }
+
+  .typeQuestion{
+      width: 75%;
+      border-radius: 8px;
+      padding-left: 2%;
+      padding-top: 1%;
+      rows:4;
+      background-color:rgb(247, 247, 247);
+  }
+
+  .submitButton{
+      margin-top: 5%;
+      margin-left: 50%;
+      width: 25%;
+      height: 20%;
+      border-radius: 18px;
+      background-color: rgb(101, 31, 255);
+      color: white;
+
+  }
+
+  #MessageSuccessfully{
+    height: 80%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 10%;
+    right: 35%;
+    border-radius: 25px;
+      overflow-x: hidden;
+      transition: 0.5s;
+    background-color: rgb(255, 255, 255);
+  }
+
+  #blur   {
+    filter:brightness(200%);
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      
+  }
+
+  .pMessage{
+      margin-left: 30%;
+      padding-left: 10%;
+      padding-right: 30%;
+  }
+
+  .IconMessage{
+      margin-top: 25%;
+      margin-left: 42%;
+  }
+
+  .shadowbackground{
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.6), 8px 6px 20px 50px rgba(0, 0, 0, 0.19);
+  }

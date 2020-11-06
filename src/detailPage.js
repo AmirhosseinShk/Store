@@ -45,6 +45,14 @@ class detail extends React.Component {
         { name: "test", price: "75.000$" },
       ],
       totalprice: 0.0,
+      brand:"test",
+      inforamtion: [
+        {
+          brand: "test",
+          inventory: "test",
+          brand: "test"
+        }
+      ],
       deleteElement: [],
     };
     this.changIcon = this.changIcon.bind(this);
@@ -174,13 +182,13 @@ class detail extends React.Component {
               <div class="shopCard producePhoto">
                 <button
                   className="ml-auto mr-3"
-                  id="shopCardButton"
+                  id="shopCardButtonDetail"
                   onClick={this.changIcon}
                 >
                   <i id="butplus" class="fas fa-plus"></i>
                 </button>
                 <div className="row ">
-                  <img id="shopCardImage" src={carpet}></img>
+                  <img id="shopCardImageDetail" src={carpet}></img>
                 </div>
                 <div class="row ">
                   <p>hsjshjhsj</p>
@@ -197,9 +205,9 @@ class detail extends React.Component {
               <h2>persian carpet</h2>
               <div class="setBrand">
                 <span>Brand: </span>
-                <span class="colorText">test</span>
+                <span class="colorText">{this.state.brand}</span>
                 <span class="setInventory">inventory: </span>
-                <span class="colorText">test</span>
+                <span class="colorText">{this.state.inforamtion.inventory}</span>
               </div>
               <div>
                 <span>Brand: </span>
@@ -265,7 +273,6 @@ class detail extends React.Component {
                 </button>
                 <br />
                 <button class="button_order" onClick={this.OpenPayPage}>
-                  {" "}
                   order
                 </button>
               </div>
