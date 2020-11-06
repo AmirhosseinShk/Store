@@ -6,6 +6,7 @@ import LegalInfo from './legalInfo.js';
 import Policy from './policy.js';
 import Questions from './askQuestion.js';
 import shoppingItem from './shoppingItem.js';
+import ResultOfSearch from './resultOfSearch.js';
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route  path="/Policy" component={Policy}></Route>
       <Route  path="/Questions" component={Questions}></Route>
       <Route  path="/ShoppingItem" component={shoppingItem}></Route>
+      <Route  path="/Result" component={ResultOfSearch}></Route>
     </BrowserRouter  >
   );
 }
