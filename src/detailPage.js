@@ -191,13 +191,26 @@ class detail extends React.Component {
                   <img id="shopCardImageDetail" src={carpet}></img>
                 </div>
                 <div class="row ">
-                  <p>hsjshjhsj</p>
+
                 </div>
                 <div class="row ">
-                  <p>hsjshjhsj</p>
+                  <div class="col-3">
+                    <img  src={carpet} heigh='250' width="70"></img>
+                  </div>
+                  <div class="col-3">
+                    <img src={carpet} heigh='110' width="70"></img>
+                  </div>
+                  <div class="col-3">
+                    <img src={carpet} heigh='200' width="70"></img>
+                  </div>
+                  <div class="col-3 buttonImgdiv">
+                    <img class="buttonImg" src={carpet} heigh='110' width="70">
+                    </img>
+                    <button class="addToImg">...</button>
+                  </div>
                 </div>
                 <div class="row ">
-                  <p>hsjshjhsj</p>
+                 
                 </div>
               </div>
             </div>

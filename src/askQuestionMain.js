@@ -29,6 +29,12 @@ export default class header extends React.Component {
 
         }
         else{
+            var x = document.getElementsByClassName("header")[0];
+            x.setAttribute("id", "");
+            var x = document.getElementsByClassName("main")[0];
+            x.setAttribute("id", "");
+            var x = document.getElementsByClassName("MainFooter")[0];
+            x.setAttribute("id", "");
             document.getElementById("MessageSuccessfully").style.width = "0";
             document.getElementById("MessageSuccessfully").setAttribute("class", "");
         }
