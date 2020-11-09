@@ -70,7 +70,7 @@
 }
 
 #shopCardImage {
-  width: inherit;
+  width: 100%;
 }
 
 #shopCardName {

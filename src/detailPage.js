@@ -1,7 +1,8 @@
 import React from "react";
 import "./asstes/css/detailPage.css";
-import "./asstes/css/MainPage.css";
+import carpetTop from "./Capture_page2.PNG";
 import carpet from "./carpet.PNG";
+import littleCarpet from "./littleCarpet.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 
@@ -33,10 +34,10 @@ class detail extends React.Component {
         { icon: "fa fa-phone fa-3x", Name: "Handicrafts" },
       ],
       specifaction: [
-        { x: "test", y: "test" },
-        { x: "test", y: "test" },
-        { x: "test", y: "test" },
-        { x: "test", y: "test" },
+        { x: "Quality", y: "test" },
+        { x: "Shape", y: "test" },
+        { x: "Quality", y: "test" },
+        { x: "Shape", y: "test" },
       ],
       ItemShop: [
         { name: "test", price: "75.000$" },
@@ -169,104 +170,109 @@ class detail extends React.Component {
     return (
       <div>
         <div class="main">
-          <div class="row ">
-            <div class="col-4 ">
-              <div class="shopCard producePhoto">
-                <button
-                  className="ml-auto mr-3"
-                  id="shopCardButton"
-                  onClick={this.changIcon}
-                >
-                  <i id="butplus" class="fas fa-plus"></i>
-                </button>
-                <div className="row ">
-                  <img id="shopCardImage" src={carpet}></img>
+          <div class="row itemCard">
+            <div class="col-5 cardMarginProduct">
+              <div class="shopCardProduct producePhoto">
+                <div className="row">
+                  <button id="shopCardButton" onClick={this.changIcon}>
+                    <i id="butplus" class="fas fa-plus"></i>
+                  </button>
                 </div>
-                <div class="row ">
-                  <p>hsjshjhsj</p>
+                <div id="shopCardImage" className="row ">
+                  <img id="cardImage" src={carpetTop}></img>
                 </div>
-                <div class="row ">
-                  <p>hsjshjhsj</p>
-                </div>
-                <div class="row ">
-                  <p>hsjshjhsj</p>
-                </div>
+                {/* <div class="row">
+                  <img src={littleCarpet} class="col"></img>
+                  <img src={littleCarpet} class="col"></img>
+                  <img src={littleCarpet} class="col"></img>
+                  <img src={littleCarpet} class="col"></img>
+                </div> */}
               </div>
             </div>
-            <div class="col-4 productText">
-              <h2>persian carpet</h2>
+            <div class="col-3 productText cardMarginProduct">
+              <h2>Persian carpet / no44</h2>
               <div class="setBrand">
-                <span>Brand: </span>
-                <span class="colorText">test</span>
-                <span class="setInventory">inventory: </span>
-                <span class="colorText">test</span>
+                <span>Brand : </span>
+                <span class="colorText">Test</span>
+                <span class="setInventory">Inventory : </span>
+                <span class="colorText">Test</span>
               </div>
               <div>
-                <span>Brand: </span>
-                <span class="colorText">test</span>
+                <span>Delivery time : </span>
+                <span class="colorText">Test</span>
               </div>
               <div class="setSize">
-                <span>size: </span>
+                <span>Size :</span>
                 <br />
-                <select class="selectBox">
-                  <option value="grapefruit">120*8</option>
-                  <option value="lime">145*26</option>
-                  <option selected value="coconut">
-                    80*10 m
-                  </option>
-                  <option value="mango">47*85 m</option>
+                <i className="down"></i>
+                <select id="" className="SelectButton" name="CityBox">
+                  <option Value="Tehran">80 x 10 m</option>
+                  <option Value="Mashhad">90 x 25 m</option>
+                  <option Value="Esfehan">250 x 100 m</option>
                 </select>
               </div>
+              <button class="live_tour" onClick={this.openNav}>
+                Live tour
+              </button>
             </div>
-            <div class="col-4  cardMargin">
-              <div class="shopCard payment">
-                <button className="ml-auto mr-3" id="shopCardButton2">
-                  75000$
-                </button>
+            <div class="col-4 cardMarginProduct">
+              <div class="shopCardProduct payment">
                 <div className="row">
-                  <h3 class="paymentMethod">Payment Method :</h3>
-                  <form class="checkbox">
-                    <input
-                      class="radioBox radioMaster"
-                      type="radio"
-                      name="PaymentMethods"
-                      value="Master-card"
-                    />
-                    <label for="Master-card"> Master-card</label>
-                    <br />
-                    <input
-                      class="radioBox radioMaster"
-                      type="radio"
-                      name="PaymentMethods"
-                      value="paypal"
-                    />
-                    <label for="Paypal"> Paypal</label>
-                    <br />
-                    <input
-                      class="radioBox radioMaster"
-                      type="radio"
-                      name="PaymentMethods"
-                      value="visa"
-                    />
-                    <label for="Visa"> Master-card</label>
-                    <br />
-                    <input
-                      class="radioBox radioMaster"
-                      type="radio"
-                      name="PaymentMethods"
-                      value="cash"
-                    />
-                    <label for="Master-card"> Master-card</label>
-                    <br />
-                  </form>
+                  <button className="ml-auto mr-3" id="shopCardButton2">
+                    <span>785.000 ₽</span>
+                  </button>
                 </div>
+                <h5 class="paymentMethod">Payment Method :</h5>
+                <form class="checkbox">
+                  <input
+                    class="radioBox radioMaster"
+                    type="radio"
+                    name="PaymentMethods"
+                    value="Master-card"
+                  />
+                  <label class="paymentLable" for="Master-card">
+                    {" "}
+                    Master-card
+                  </label>
+                  <br />
+                  <input
+                    class="radioBox radioMaster"
+                    type="radio"
+                    name="PaymentMethods"
+                    value="paypal"
+                  />
+                  <label class="paymentLable" for="Paypal">
+                    {" "}
+                    Paypal
+                  </label>
+                  <br />
+                  <input
+                    class="radioBox radioMaster"
+                    type="radio"
+                    name="PaymentMethods"
+                    value="visa"
+                  />
+                  <label class="paymentLable" for="Visa">
+                    Visa
+                  </label>
+                  <br />
+                  <input
+                    class="radioBox radioMaster"
+                    type="radio"
+                    name="PaymentMethods"
+                    value="cash"
+                  />
+                  <label class="paymentLable" for="Master-card">
+                    Cash
+                  </label>
+                  <br />
+                </form>
                 <button class="button_price" onClick={this.openNav}>
-                  price detail
+                  Price details
                 </button>
                 <br />
                 <button class="button_order" onClick={this.OpenPayPage}>
-                  {" "}
-                  order
+                  Order
                 </button>
               </div>
             </div>
@@ -294,7 +300,7 @@ class detail extends React.Component {
             >
               {this.state.Categories.map((item) => (
                 <div className="col-md-3 cardMargin">
-                  <div class="shopCard">
+                  <div class="shopCardProduct">
                     <p id="shopCardName">{item.Name}</p>
                     <img id="shopCardImage" src={carpet}></img>
                     <div className="row shopCardRow">

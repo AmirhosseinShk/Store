@@ -1,108 +1,106 @@
-.header{
-	overflow: hidden;
-	width:100%;
-	padding-top:2.5%;
-	padding-left: 5%;
-	padding-right: 5%;
+.header {
+  overflow: hidden;
+  width: 100%;
+  padding-top: 2.5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-.headerImage{
-	margin-left: 1%;
+.headerImage {
+  padding-left: 0 !important;
+}
+
+#border{
+  height: 100%;
 }
 
 .searchBorder {
-	margin-left: 7%;
-	margin-top: 1%;
+  margin-left: 7%;
+  margin-top: 1%;
 }
 
 .SelectZone {
-    font-family: FontAwesome , IranSans;
-	font-size: 16px;
-	height: 100%;
-	width: 100%;
-	resize: none;
-	border: 0px solid;
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
-	border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
-	background-color : #F6F6F6;	
+  font-family: FontAwesome, IranSans;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  border: 0px solid;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: #f6f6f6;
 }
 
-input[type="text"], input[type="password"], textarea, select { 
-    outline: none;
+.SearchButton {
+  position: relative;
+  border: 1px solid lightgray;
+  width: 50%;
+  height: 100%;
+  margin-left: 10%;
+  border-radius: 14px;
+  background-color: #651fff;
 }
 
-.SearchButton{
-	position: relative; 
-	border: 1px solid lightgray;
-	width: 45%;
-	height: 100%;
-	margin-left: 10%;
-	border-radius: 14px;
-	background-color: #651FFF;    
+#SearchButtonicon {
+  color: white;
+  font-size: 20px;
 }
 
-#SearchButtonicon{
-	color: white;
-	font-size: 20px;
+.MenuBar {
+  font-size: 14px;
 }
 
-.MenuBar{
-	padding-left: 37%;
-	font-size: 30px;
+#MenuItem{
+	border: none;
+	background: none;
 }
 
 .sidenav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	overflow-x: hidden;
-	transition: 0.5s;
-	background-color: rgb(255, 255, 255);
-   	margin: auto;
-  }
-  
-
-  
-  .closebtn {
-	margin-top: 10%;
-	margin-left: 82%;
-  }
-
-  #blur   {
-	filter: blur(5px);
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
 }
 
-.ShowMenu{
-	margin-top: 20%;
-	padding-left: 20%;
+.closebtn {
+  margin-top: 10%;
+  margin-left: 82%;
 }
 
-
-h3{
-    color: rgb(101, 35, 255);
+#blur {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
 }
 
-
-
-.nextrow{
-	margin-top:35%;
-	padding-left: 20%;
+.ShowMenu {
+  margin-top: 20%;
+  padding-left: 20%;
 }
 
-.item{
-	color: rgb(178, 180, 185);
+h3 {
+  color: rgb(101, 35, 255);
 }
 
-#NewItem{
-	color: red;
+.nextrow {
+  margin-top: 35%;
+  padding-left: 20%;
 }
 
+.item {
+  color: rgb(178, 180, 185);
+}
+
+#NewItem {
+  color: red;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./asstes/css/Header.css";
 import "./asstes/css/global.css";
-import testShop from "./shopTest.png";
+import testShop from "./shopTest.svg";
 import "./asstes/icons/fontello/css/fontello.css";
 
 export default class header extends React.Component {
@@ -36,9 +36,9 @@ export default class header extends React.Component {
       <div>
         <div className="header">
           <div className="row">
-            <img src={testShop} className="headerImage" />
+            <img src={testShop} className="headerImage col-2" />
             <div className="searchBorder col-5" style={{ marginTop: "0" }}>
-              <div className="row" style={{ height: "80%" }}>
+              <div className="row" id="border">
                 <input
                   type="text"
                   id="zoneArea"
@@ -52,9 +52,10 @@ export default class header extends React.Component {
                 </div>
               </div>
             </div>
-            <i class="MenuBar fas fa-grip-lines" onClick={this.openNav}></i>
+            <button id="MenuItem" className="ml-auto">
+              <i class="MenuBar fas icon-burger-menu" onClick={this.openNav}></i>
+            </button>
           </div>
-
         </div>
         <div id="mySidenav" class="sidenav">
           <i class="closebtn fa fa-times fa-2x" onClick={this.closeNav}></i>

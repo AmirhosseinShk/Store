@@ -4,7 +4,11 @@ import './asstes/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "./asstes/css/fontawesome-free-5.15.1-web/css/all.css";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
+import $ from "jquery";
+import Popper from "popper.js";
 
 ReactDOM.render(
   <React.StrictMode>

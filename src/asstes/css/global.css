@@ -59,3 +59,17 @@ a {
   overflow-x: clip !important;
   overflow-y: inherit !important;
 }
+
+button:focus{outline:none !important;}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  outline: none;
+}
+
+[type="radio"]:checked ::before {
+  background: green;
+  box-shadow: 0 0 0 0.25em #000;
+}
