@@ -363,3 +363,53 @@
   transition: 0.5s;
   background-color: rgb(255, 255, 255);
 }
+
+.buttomImgDiv{
+  position: relative;
+}
+
+.blurImg{
+  filter: blur(5px);
+}
+
+.buttonImg{
+  position: absolute;
+  top:25%;
+  right: 45%;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  height: 50%;
+  width: 30%;
+  text-align: center;
+}
+
+#panelImg{
+  height: 40%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  right: 25%;
+  top: 30%;
+  border: none;
+  overflow-x: hidden;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 1; 
+ -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); 
+}
+
+.setImgLarge{
+  padding-right: 40%;
+  right:30%;
+  top:0;
+  left:20%;
+
+}
+.setcolor{
+ 
+}
