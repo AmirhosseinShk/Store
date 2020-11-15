@@ -55,6 +55,7 @@ class detail extends React.Component {
     this.OpenPayPage = this.OpenPayPage.bind(this);
     this.closeNav = this.closeNav.bind(this);
     this.RegisterForm = this.RegisterForm.bind(this);
+    this.ShowImgLarge = this.ShowImgLarge.bind(this);
   }
 
 
@@ -96,6 +97,18 @@ class detail extends React.Component {
       document.getElementById("shopCardButton").style.background = "#651fff";
       document.getElementById("NewItem").setAttribute("class", "");
     }
+  }
+
+  ShowImgLarge(){
+    var x = document.getElementsByClassName("header")[0];
+    x.setAttribute("id", "blur");
+    var x = document.getElementsByClassName("main")[0];
+    x.setAttribute("id", "blur");
+    var x = document.getElementsByClassName("MainFooter")[0];
+    x.setAttribute("id", "blur");
+    console.log(document.getElementById("panelImg"));
+     document.getElementById("panelImg").style.width = "45%";
+    
   }
 
   openNav() {
@@ -193,6 +206,8 @@ class detail extends React.Component {
     y.parentNode.replaceChild(x, y);
   }
 
+
+
   render() {
     return (
       <div>
@@ -208,12 +223,21 @@ class detail extends React.Component {
                 <div id="shopCardImage" className="row ">
                   <img id="cardImage" src={carpetTop}></img>
                 </div>
-                {/* <div class="row">
-                  <img src={littleCarpet} class="col"></img>
-                  <img src={littleCarpet} class="col"></img>
-                  <img src={littleCarpet} class="col"></img>
-                  <img src={littleCarpet} class="col"></img>
-                </div> */}
+                 <div class="row">
+                   <div class="col-3">
+                  <img src={littleCarpet} ></img>
+                  </div>
+                  <div class="col-3">
+                  <img src={littleCarpet} ></img>
+                  </div>
+                  <div class="col-3">
+                  <img src={littleCarpet} ></img>
+                  </div>
+                  <div class="col-3 buttomImgDiv">
+                  <img src={littleCarpet} class="blurImg" ></img>
+                  <button class="buttonImg" onClick={this.ShowImgLarge}>...</button>
+                  </div>
+                </div> 
               </div>
             </div>
             <div class="col-3 productText cardMarginProduct">
@@ -424,6 +448,19 @@ class detail extends React.Component {
             />
           </form>
         </div>
+        <div class="showImg" id="panelImg">
+        <Flickity 
+      className={'carousel'} // default ''
+      elementType={'div'} // default 'div'
+      options={flickityOptions} // takes flickity options {}
+      disableImagesLoaded={false} // default false
+      reloadOnUpdate // default false
+    >
+      <img class="setImgLarge" width="600" height="250" src={carpetTop}/>
+      <img class="setImgLarge"src={carpetTop} width="600" height="250"/>
+      <img  class="setImgLarge"src={carpetTop} width="600" height="250"/>
+    </Flickity>
+      </div>
       </div>
     );
   }
