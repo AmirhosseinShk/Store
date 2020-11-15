@@ -5,6 +5,8 @@
   height: 100%;
   border-radius: 25px;
   box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
+  margin-left: 0% !important;
+  margin-right: 0% !important;
 }
 
 .cardMarginProduct {
@@ -20,6 +22,7 @@
   width: 90%;
   border-radius: 25px;
   margin: auto;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 #cardImage {

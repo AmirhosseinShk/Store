@@ -1,10 +1,11 @@
 import React from "react";
+import axios from "axios";
 import "./asstes/css/MainPage.css";
-import LargeHorizontal from "./2.PNG";
-import Vertical from "./1.PNG";
-import SmallHorizontal from "./3.png";
-import carpet from "./carpet.PNG";
-import carpet2 from "./carpet2.PNG";
+import LargeHorizontal from "./asstes/Photos/LargeHorizontal.PNG";
+import Vertical from "./asstes/Photos/Vertical.PNG";
+import SmallHorizontal from "./asstes/Photos/SmallHorizontal.png";
+import carpet from "./asstes/Photos/carpet.PNG";
+import carpet2 from "./asstes/Photos/carpet2.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 import "./asstes/icons/fontello/css/fontello.css";
@@ -36,7 +37,47 @@ class MainPage extends React.Component {
         { icon: "fa icon-jacket", Name: "Clothes" },
         { icon: "fa icon-page-1", Name: "Handicrafts" },
       ],
+      mostRecentCarpets: [],
+      popularCarpets: [],
     };
+    this.refreshFlickity = this.refreshFlickity.bind(this);
+  }
+
+  componentDidMount() {
+    var urlDb = "http://localhost:8080/Server/rest/getMostRecent";
+    axios(urlDb).then(
+      (result) => {
+        var MostRecent = result.data.Carpets;
+        console.log(MostRecent);
+        console.log(MostRecent[1].name);
+        this.setState({
+          mostRecentCarpets: MostRecent,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    var urlDb = "http://localhost:8080/Server/rest/getPoularCarpet";
+    axios(urlDb).then(
+      (result) => {
+        var popular = result.data.Carpets;
+        console.log(popular);
+        console.log(popular[1].name);
+        this.setState({
+          popularCarpets: popular,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.refreshFlickity();
+  }
+
+  refreshFlickity() {
+    this.flkty.resize();
   }
 
   render() {
@@ -79,20 +120,21 @@ class MainPage extends React.Component {
         <div className="recent">
           <h4>Most recent</h4>
           <Flickity
+            flickityRef={(c) => (this.flkty = c)}
             className={"carousel"} // default ''
             elementType={"div"} // default 'div'
             options={flickityOptions} // takes flickity options {}
             disableImagesLoaded={false} // default false
-            reloadOnUpdate // default false
-            static={true} // default false
+            reloadOnUpdate={true} // default false
+            static={false} // default false
           >
-            {this.state.Categories.map((item) => (
+            {this.state.mostRecentCarpets.map((item) => (
               <div className="col-md-3 cardMargin">
                 <div class="shopCard">
-                  <p id="shopCardName">{item.Name}</p>
+                  <p id="shopCardName">{item.name}</p>
                   <img id="shopCardImage" src={carpet2}></img>
                   <div className="row shopCardRow">
-                    <span id="shopCardPrice">785.000 ₽</span>
+                    <span id="shopCardPrice">{item.price} ₽</span>
                     <button className="ml-auto mr-3" id="shopCardButton">
                       <i class="fas fa-plus"></i>
                     </button>
@@ -105,20 +147,21 @@ class MainPage extends React.Component {
         <div className="popular">
           <h4>Popular products</h4>
           <Flickity
+            flickityRef={(c) => (this.flkty = c)}
             className={"carousel"} // default ''
             elementType={"div"} // default 'div'
             options={flickityOptions} // takes flickity options {}
             disableImagesLoaded={false} // default false
-            reloadOnUpdate // default false
-            static // default false
+            reloadOnUpdate={true} // default false
+            static={false} // default false
           >
-            {this.state.Categories.map((item) => (
+            {this.state.popularCarpets.map((item) => (
               <div className="col-md-3 cardMargin">
                 <div class="shopCard">
-                  <p id="shopCardName">{item.Name}</p>
+                  <p id="shopCardName">{item.name}</p>
                   <img id="shopCardImage" src={carpet}></img>
                   <div className="row shopCardRow">
-                    <span id="shopCardPrice">785.000 ₽</span>
+                    <span id="shopCardPrice">{item.price} ₽</span>
                     <button className="ml-auto mr-3" id="shopCardButton">
                       <i class="fas fa-plus"></i>
                     </button>

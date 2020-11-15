@@ -1,13 +1,14 @@
 .header {
   overflow: hidden;
   width: 100%;
-  padding-top: 2.5%;
-  padding-left: 5%;
-  padding-right: 5%;
+  margin-top: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .headerImage {
   padding-left: 0 !important;
+  margin-left: 1%;
 }
 
 #border{
@@ -36,7 +37,7 @@
 .SearchButton {
   position: relative;
   border: 1px solid lightgray;
-  width: 50%;
+  width: 45%;
   height: 100%;
   margin-left: 10%;
   border-radius: 14px;
@@ -54,7 +55,8 @@
 
 #MenuItem{
 	border: none;
-	background: none;
+  background: none;
+  margin-left: 7%;
 }
 
 .sidenav {

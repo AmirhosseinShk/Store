@@ -1,8 +1,9 @@
 import React from "react";
+import axios from "axios";
 import "./asstes/css/detailPage.css";
-import carpetTop from "./Capture_page2.PNG";
-import carpet from "./carpet.PNG";
-import littleCarpet from "./littleCarpet.PNG";
+import carpetTop from "./asstes/Photos/Capture_page2.PNG";
+import carpet from "./asstes/Photos/carpet.PNG";
+import littleCarpet from "./asstes/Photos/littleCarpet.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 
@@ -47,12 +48,38 @@ class detail extends React.Component {
       ],
       totalprice: 0.0,
       deleteElement: [],
+      popularCarpets: []
     };
     this.changIcon = this.changIcon.bind(this);
     this.openNav = this.openNav.bind(this);
     this.OpenPayPage = this.OpenPayPage.bind(this);
     this.closeNav = this.closeNav.bind(this);
     this.RegisterForm = this.RegisterForm.bind(this);
+  }
+
+
+  componentDidMount() {
+    var urlDb = "http://localhost:8080/Server/rest/getPoularCarpet";
+    axios(urlDb).then(
+      (result) => {
+        var popular = result.data.Carpets;
+        console.log(popular);
+        console.log(popular[1].name);
+        this.setState({
+          popularCarpets: popular,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.refreshFlickity();
+  }
+
+  refreshFlickity() {
+    console.log("here");
+    this.flkty.resize();
+    console.log("here");
   }
 
   changIcon() {
@@ -291,20 +318,21 @@ class detail extends React.Component {
           <div className="popular">
             <h4>Popular products</h4>
             <Flickity
+              flickityRef={(c) => (this.flkty = c)}
               className={"carousel"} // default ''
               elementType={"div"} // default 'div'
               options={flickityOptions} // takes flickity options {}
               disableImagesLoaded={false} // default false
-              reloadOnUpdate // default false
-              static // default false
+              reloadOnUpdate={true} // default false
+              static={false} // default false
             >
-              {this.state.Categories.map((item) => (
+              {this.state.popularCarpets.map((item) => (
                 <div className="col-md-3 cardMargin">
                   <div class="shopCardProduct">
-                    <p id="shopCardName">{item.Name}</p>
+                    <p id="shopCardName">{item.name}</p>
                     <img id="shopCardImage" src={carpet}></img>
                     <div className="row shopCardRow">
-                      <span id="shopCardPrice">785.000 ₽</span>
+                      <span id="shopCardPrice">{item.price} ₽</span>
                       <button className="ml-auto mr-3" id="shopCardButton">
                         <i class="fas fa-plus"></i>
                       </button>

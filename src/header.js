@@ -1,7 +1,7 @@
 import React from "react";
 import "./asstes/css/Header.css";
 import "./asstes/css/global.css";
-import testShop from "./shopTest.svg";
+import testShop from "./asstes/Photos/logo.svg";
 import "./asstes/icons/fontello/css/fontello.css";
 
 export default class header extends React.Component {
@@ -52,7 +52,7 @@ export default class header extends React.Component {
                 </div>
               </div>
             </div>
-            <button id="MenuItem" className="ml-auto">
+            <button id="MenuItem" className="col">
               <i class="MenuBar fas icon-burger-menu" onClick={this.openNav}></i>
             </button>
           </div>
