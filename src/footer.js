@@ -1,5 +1,7 @@
 import React from "react";
 import "./asstes/css/Footer.css";
+import "./asstes/css/global.css";
+import { Link } from "react-router-dom";
 
 function footer() {
   return (
@@ -25,61 +27,61 @@ function footer() {
         <div class="col-auto" id="SpaceFooters">
           <spam class="headerOfFooter">Products</spam>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Clothes
           </a>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Carpet
           </a>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Handicrafts
           </a>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Bags
           </a>
         </div>
         <div class="col-auto" id="SpaceFooters">
           <spam class="headerOfFooter">About us</spam>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <Link to={{ pathname: "/AboutUs" }} className="ItemFooter deleteUnderLink">
             Introduction
-          </a>
+          </Link>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <Link to={{ pathname: "/LegalInfo" }} className="ItemFooter deleteUnderLink">
             Legal Info
-          </a>
+          </Link>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <Link to={{ pathname: "/Policy" }} className="ItemFooter deleteUnderLink">
             Policy
-          </a>
+          </Link>
         </div>
         <div class="col-auto" id="SpaceFooters">
           <spam class="headerOfFooter">Support</spam>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Conditions
           </a>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <Link to={{ pathname: "/Questions" }} className="ItemFooter deleteUnderLink">
             FAQ
-          </a>
+          </Link>
         </div>
 
         <div class="col-auto" id="SpaceFooters">
           <spam class="headerOfFooter">Payment</spam>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Visa
           </a>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Master-card
           </a>
           <br class="line" />
-          <a href="#" class="ItemFooter">
+          <a href="#" class="ItemFooter deleteUnderLink">
             Paypal
           </a>
         </div>

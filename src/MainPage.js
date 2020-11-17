@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./asstes/css/MainPage.css";
+import "./asstes/css/global.css";
 import LargeHorizontal from "./asstes/Photos/LargeHorizontal.PNG";
 import Vertical from "./asstes/Photos/Vertical.PNG";
 import SmallHorizontal from "./asstes/Photos/SmallHorizontal.png";
@@ -9,6 +10,7 @@ import carpet2 from "./asstes/Photos/carpet2.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 import "./asstes/icons/fontello/css/fontello.css";
+import { Link } from "react-router-dom";
 
 const flickityOptions = {
   initialIndex: 0,
@@ -95,12 +97,15 @@ class MainPage extends React.Component {
                 <h4 class="category">Categories</h4>
                 <div class="row">
                   {this.state.Categories.map((item) => (
-                    <div class="col-3">
+                    <Link
+                      to={{ pathname: "/Result", state: { area: item } }}
+                      class="col-3 deleteUnderLink"
+                    >
                       <div class="setcolor">
                         <i class={item.icon} id="iconCenter"></i>
                         <h5 id="titleCategories">{item.Name}</h5>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -129,7 +134,10 @@ class MainPage extends React.Component {
             static={false} // default false
           >
             {this.state.mostRecentCarpets.map((item) => (
-              <div className="col-md-3 cardMargin">
+              <Link
+                to={{ pathname: "/Details", state: { area: item } }}
+                className="col-md-3 deleteUnderLink"
+              >
                 <div class="shopCard">
                   <p id="shopCardName">{item.name}</p>
                   <img id="shopCardImage" src={carpet2}></img>
@@ -140,7 +148,7 @@ class MainPage extends React.Component {
                     </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </Flickity>
         </div>
@@ -156,7 +164,10 @@ class MainPage extends React.Component {
             static={false} // default false
           >
             {this.state.popularCarpets.map((item) => (
-              <div className="col-md-3 cardMargin">
+              <Link
+                to={{ pathname: "/Details", state: { area: item } }}
+                className="col-md-3 deleteUnderLink"
+              >
                 <div class="shopCard">
                   <p id="shopCardName">{item.name}</p>
                   <img id="shopCardImage" src={carpet}></img>
@@ -167,7 +178,7 @@ class MainPage extends React.Component {
                     </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </Flickity>
         </div>

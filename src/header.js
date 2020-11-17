@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./asstes/css/Header.css";
 import "./asstes/css/global.css";
 import testShop from "./asstes/Photos/logo.svg";
@@ -36,7 +37,10 @@ export default class header extends React.Component {
       <div>
         <div className="header">
           <div className="row">
-            <img src={testShop} className="headerImage col-2" />
+            <Link to={{ pathname: "/" }} className="headerImage col-2">
+              <img src={testShop} />
+            </Link>
+
             <div className="searchBorder col-5" style={{ marginTop: "0" }}>
               <div className="row" id="border">
                 <input
@@ -47,13 +51,18 @@ export default class header extends React.Component {
                 ></input>
                 <div className=" col-3">
                   <button className="SearchButton" type="submit">
-                    <i class="fas icon-cart" id="SearchButtonicon"></i>
+                    <Link to={{ pathname: "/ShoppingItem" }}>
+                      <i class="fas icon-cart" id="SearchButtonicon"></i>
+                    </Link>
                   </button>
                 </div>
               </div>
             </div>
             <button id="MenuItem" className="col">
-              <i class="MenuBar fas icon-burger-menu" onClick={this.openNav}></i>
+              <i
+                class="MenuBar fas icon-burger-menu"
+                onClick={this.openNav}
+              ></i>
             </button>
           </div>
         </div>
@@ -80,17 +89,26 @@ export default class header extends React.Component {
             </div>
             <div class="col-6">
               <h3>About Us</h3>
-              <a class="item" href="#">
+              <Link
+                to={{ pathname: "/AboutUs" }}
+                className="item deleteUnderLink"
+              >
                 Introduction
-              </a>
+              </Link>
               <br></br>
-              <a class="item" href="#">
+              <Link
+                to={{ pathname: "/LegalInfo" }}
+                className="item deleteUnderLink"
+              >
                 Legal Info
-              </a>
+              </Link>
               <br></br>
-              <a class="item" href="#">
+              <Link
+                to={{ pathname: "/Policy" }}
+                className="item deleteUnderLink"
+              >
                 Policy
-              </a>
+              </Link>
             </div>
           </div>
           <div class="row ShowMenu ">
@@ -100,9 +118,12 @@ export default class header extends React.Component {
                 Condition
               </a>
               <br></br>
-              <a class="item" href="#">
+              <Link
+                to={{ pathname: "/Questions" }}
+                className="item deleteUnderLink"
+              >
                 FAQ
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import carpet from "./asstes/Photos/carpet.PNG";
 import littleCarpet from "./asstes/Photos/littleCarpet.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
+import { Link } from "react-router-dom";
 
 const flickityOptions = {
   initialIndex: 0,
@@ -47,16 +48,16 @@ class detail extends React.Component {
         { name: "test", price: "75.000$" },
       ],
       totalprice: 0.0,
-      brand:"test",
+      brand: "test",
       inforamtion: [
         {
           brand: "test",
           inventory: "test",
-          brand: "test"
-        }
+          brand: "test",
+        },
       ],
       deleteElement: [],
-      popularCarpets: []
+      popularCarpets: [],
     };
     this.changIcon = this.changIcon.bind(this);
     this.openNav = this.openNav.bind(this);
@@ -65,7 +66,6 @@ class detail extends React.Component {
     this.RegisterForm = this.RegisterForm.bind(this);
     this.ShowImgLarge = this.ShowImgLarge.bind(this);
   }
-
 
   componentDidMount() {
     var urlDb = "http://localhost:8080/Server/rest/getPoularCarpet";
@@ -107,7 +107,7 @@ class detail extends React.Component {
     }
   }
 
-  ShowImgLarge(){
+  ShowImgLarge() {
     var x = document.getElementsByClassName("header")[0];
     x.setAttribute("id", "blur");
     var x = document.getElementsByClassName("main")[0];
@@ -115,8 +115,7 @@ class detail extends React.Component {
     var x = document.getElementsByClassName("MainFooter")[0];
     x.setAttribute("id", "blur");
     console.log(document.getElementById("panelImg"));
-     document.getElementById("panelImg").style.width = "45%";
-    
+    document.getElementById("panelImg").style.width = "45%";
   }
 
   openNav() {
@@ -214,8 +213,6 @@ class detail extends React.Component {
     y.parentNode.replaceChild(x, y);
   }
 
-
-
   render() {
     return (
       <div>
@@ -231,21 +228,23 @@ class detail extends React.Component {
                 <div id="shopCardImage" className="row ">
                   <img id="cardImage" src={carpetTop}></img>
                 </div>
-                 <div class="row">
-                   <div class="col-3">
-                  <img src={littleCarpet} ></img>
+                <div class="row">
+                  <div class="col-3">
+                    <img src={littleCarpet}></img>
                   </div>
                   <div class="col-3">
-                  <img src={littleCarpet} ></img>
+                    <img src={littleCarpet}></img>
                   </div>
                   <div class="col-3">
-                  <img src={littleCarpet} ></img>
+                    <img src={littleCarpet}></img>
                   </div>
                   <div class="col-3 buttomImgDiv">
-                  <img src={littleCarpet} class="blurImg" ></img>
-                  <button class="buttonImg" onClick={this.ShowImgLarge}>...</button>
+                    <img src={littleCarpet} class="blurImg"></img>
+                    <button class="buttonImg" onClick={this.ShowImgLarge}>
+                      ...
+                    </button>
                   </div>
-                </div> 
+                </div>
               </div>
             </div>
             <div class="col-3 productText cardMarginProduct">
@@ -359,7 +358,10 @@ class detail extends React.Component {
               static={false} // default false
             >
               {this.state.popularCarpets.map((item) => (
-                <div className="col-md-3 cardMargin">
+                <Link
+                  to={{ pathname: "/Details", state: { area: item } }}
+                  className="col-md-3 deleteUnderLink"
+                >
                   <div class="shopCardProduct">
                     <p id="shopCardName">{item.name}</p>
                     <img id="shopCardImage" src={carpet}></img>
@@ -370,7 +372,7 @@ class detail extends React.Component {
                       </button>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </Flickity>
           </div>
@@ -457,18 +459,18 @@ class detail extends React.Component {
           </form>
         </div>
         <div class="showImg" id="panelImg">
-        <Flickity 
-      className={'carousel'} // default ''
-      elementType={'div'} // default 'div'
-      options={flickityOptions} // takes flickity options {}
-      disableImagesLoaded={false} // default false
-      reloadOnUpdate // default false
-    >
-      <img class="setImgLarge" width="600" height="250" src={carpetTop}/>
-      <img class="setImgLarge"src={carpetTop} width="600" height="250"/>
-      <img  class="setImgLarge"src={carpetTop} width="600" height="250"/>
-    </Flickity>
-      </div>
+          <Flickity
+            className={"carousel"} // default ''
+            elementType={"div"} // default 'div'
+            options={flickityOptions} // takes flickity options {}
+            disableImagesLoaded={false} // default false
+            reloadOnUpdate // default false
+          >
+            <img class="setImgLarge" width="600" height="250" src={carpetTop} />
+            <img class="setImgLarge" src={carpetTop} width="600" height="250" />
+            <img class="setImgLarge" src={carpetTop} width="600" height="250" />
+          </Flickity>
+        </div>
       </div>
     );
   }
