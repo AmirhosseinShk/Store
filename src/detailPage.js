@@ -47,6 +47,14 @@ class detail extends React.Component {
         { name: "test", price: "75.000$" },
       ],
       totalprice: 0.0,
+      brand:"test",
+      inforamtion: [
+        {
+          brand: "test",
+          inventory: "test",
+          brand: "test"
+        }
+      ],
       deleteElement: [],
       popularCarpets: []
     };
