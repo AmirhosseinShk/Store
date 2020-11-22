@@ -1,3 +1,14 @@
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
 .itemCard {
   font-family: FontAwesome, IranSans;
   resize: none;
@@ -262,6 +273,12 @@
   margin-left: 1%;
 }
 
+.Tprice{
+  color: rgb(111, 32, 255);
+  margin-left: 1%;
+  font-weight: bold;
+}
+
 .titlePriceDetails {
   margin-left: 38%;
   margin-bottom: 2%;
@@ -269,7 +286,7 @@
 
 .lineTotal {
   margin-top: 5%;
-  margin-right: 45%;
+  margin-right: 37%;
   width: 30%;
   color: black;
 }
@@ -292,7 +309,7 @@
 }
 
 .pay {
-  margin-top: 15%;
+  margin-top: 35%;
   margin-left: 24%;
   margin-bottom: 5%;
   background-color: rgb(105, 31, 255);
@@ -315,6 +332,7 @@
   width: 100%;
   margin-top: 10%;
   margin-left: 0%;
+  margin-bottom: 65%;
 }
 
 .closebtn {
@@ -431,3 +449,136 @@
 .setcolor{
  
 }
+
+.priceForm{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.registerFormVisa{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 15%;
+  margin-bottom: 5%;
+}
+
+.setsizetimes{
+  margin-right: 5%;
+  margin-top: 1%;
+}
+
+.times{
+  font-size: 180%;
+  color: black;
+  padding-bottom: 12%;
+
+}
+
+#my-modal{
+  width: 90%;
+  border-radius: 25px;
+}
+
+.registerFormCash{
+  margin-top: 50%;
+}
+
+.modal-open .container-fluid, .modal-open  .container {
+  -webkit-filter: blur(5px) grayscale(90%);
+}
+
+.visaInput{
+  width: 90%;
+  padding-bottom: 4%;
+  padding-top: 2%;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 7%;
+}
+
+#dropdownDateYear{
+border-radius: 5px 15px 15px 5px;
+width: 30%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+text-align: center;
+background-color: rgb(247, 247, 247) ;
+color: rgb(170, 169, 196);
+margin-bottom: 7%;
+margin-right: 1%;
+}
+#dropdownDateMonth{
+width: 30%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+text-align: center;
+background-color: rgb(247, 247, 247) ;
+color: rgb(170, 169, 196);
+margin-bottom: 7%;
+margin-right: 1%;
+}
+#dropdownDateDay{
+  border-radius: 15px 5px 5px 15px;
+  width: 30%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: center;
+  background-color: rgb(247, 247, 247) ;
+  color: rgb(170, 169, 196);
+  margin-bottom: 7%;
+  margin-right: 1%;
+  }
+
+.min{
+  border-radius: 5px 15px 15px 5px;
+width: 30%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+text-align: center;
+background-color: rgb(247, 247, 247) ;
+color: rgb(170, 169, 196);
+margin-bottom: 7%;
+margin-right: 1%;
+}
+
+.hour{
+  border-radius: 15px 5px 5px 15px;
+width: 30%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+text-align: center;
+background-color: rgb(247, 247, 247) ;
+color: rgb(170, 169, 196);
+margin-bottom: 7%;
+margin-right: 1%;
+}
+
+.titleformvisa{
+  margin-bottom: 5%;
+}
+
+.starascii{
+  color:rgb(105, 31, 255); ;
+}
+
+.buttonVisa{
+  margin-top: 25%;
+  margin-left: 1%;
+  margin-bottom: 5%;
+  background-color: rgb(105, 31, 255);
+  color: white;
+  width: 100%;
+  padding-top: 3.5%;
+  padding-bottom: 3.5%;
+  border-radius: 25px;
+}
+
+.visaInput:focus {
+  background-color: white;
+  color: black;
+  border:1px solid rgb(105, 31, 255);
+}
+
+

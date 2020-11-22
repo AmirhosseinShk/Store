@@ -7,6 +7,8 @@ import littleCarpet from "./asstes/Photos/littleCarpet.PNG";
 import Flickity from "react-flickity-component";
 import "flickity/css/flickity.css";
 import { Link } from "react-router-dom";
+import { YearPicker, MonthPicker, DayPicker } from 'react-dropdown-date';
+
 
 const flickityOptions = {
   initialIndex: 0,
@@ -24,6 +26,25 @@ const flickityOptions = {
   arrowShape: { x0: 10, x1: 40, y1: 30, x2: 50, y2: 30, x3: 20 },
   //pauseAutoPlayOnHover: false,
 };
+
+function filmin(arr) {
+  for (var i = 1; i < 61; i++) {
+    arr[i - 1] = i;
+  }
+  console.log(arr);
+  return arr;
+
+}
+
+function filhour(arr) {
+  for (var i = 1; i < 24; i++) {
+    arr[i - 1] = i;
+  }
+  arr[23]="00";
+  console.log(arr);
+  return arr;
+
+}
 
 class detail extends React.Component {
   constructor(props) {
@@ -58,6 +79,9 @@ class detail extends React.Component {
       ],
       deleteElement: [],
       popularCarpets: [],
+      checkValue: "",
+      year: null, month: null, day: null,
+      minute: [], hour:[]
     };
     this.changIcon = this.changIcon.bind(this);
     this.openNav = this.openNav.bind(this);
@@ -65,6 +89,8 @@ class detail extends React.Component {
     this.closeNav = this.closeNav.bind(this);
     this.RegisterForm = this.RegisterForm.bind(this);
     this.ShowImgLarge = this.ShowImgLarge.bind(this);
+    this.setValueCheckbox = this.setValueCheckbox.bind(this);
+
   }
 
   componentDidMount() {
@@ -83,12 +109,25 @@ class detail extends React.Component {
       }
     );
     this.refreshFlickity();
+    var arrmin = filmin(this.state.minute);
+    var arrhour = filhour(this.state.hour);
+    this.setState({ minute: arrmin });
+    this.setState({ hour: arrhour });
   }
+
+
+
 
   refreshFlickity() {
     console.log("here");
     this.flkty.resize();
     console.log("here");
+  }
+
+  setValueCheckbox(event) {
+
+    this.setState({ checkValue: "#" + event.target.value })
+
   }
 
   changIcon() {
@@ -131,7 +170,7 @@ class detail extends React.Component {
       totalPrice = totalPrice + parseFloat(this.state.ItemShop[i].price);
     }
     this.setState({ totalprice: totalPrice });
-    var lengthX = x.length;
+    /*var lengthX = x.length;
     var selectRadio = "";
     for (var i = 0; i < lengthX; i++) {
       if (x[i].checked) {
@@ -145,7 +184,7 @@ class detail extends React.Component {
       document
         .getElementById("priceDetail")
         .setAttribute("class", "shadowbackground");
-    }
+    }*/
   }
 
   OpenPayPage() {
@@ -179,8 +218,6 @@ class detail extends React.Component {
   }
 
   closeNav() {
-    document.getElementById("priceDetail").style.width = "0";
-    document.getElementById("priceDetail").setAttribute("class", "");
     var x = document.getElementsByClassName("header")[0];
     x.setAttribute("id", null);
     var x = document.getElementsByClassName("main")[0];
@@ -212,8 +249,15 @@ class detail extends React.Component {
     var x = document.getElementById("test");
     y.parentNode.replaceChild(x, y);
   }
+  test() {
+    const modal = document.getElementsByClassName("modal")[2];
+    modal.style.display = "block";
+    modal.style.display = "none";
+    modal.setAttribute("class", " ")
+  }
 
   render() {
+    const myExtScript = require('./myscript.js')
     return (
       <div>
         <div class="main">
@@ -287,6 +331,7 @@ class detail extends React.Component {
                     type="radio"
                     name="PaymentMethods"
                     value="Master-card"
+                    onClick={this.setValueCheckbox}
                   />
                   <label class="paymentLable" for="Master-card">
                     {" "}
@@ -298,6 +343,7 @@ class detail extends React.Component {
                     type="radio"
                     name="PaymentMethods"
                     value="paypal"
+                    onClick={this.setValueCheckbox}
                   />
                   <label class="paymentLable" for="Paypal">
                     {" "}
@@ -309,6 +355,7 @@ class detail extends React.Component {
                     type="radio"
                     name="PaymentMethods"
                     value="visa"
+                    onClick={this.setValueCheckbox}
                   />
                   <label class="paymentLable" for="Visa">
                     Visa
@@ -319,17 +366,18 @@ class detail extends React.Component {
                     type="radio"
                     name="PaymentMethods"
                     value="cash"
+                    onClick={this.setValueCheckbox}
                   />
                   <label class="paymentLable" for="Master-card">
                     Cash
                   </label>
                   <br />
                 </form>
-                <button class="button_price" onClick={this.openNav}>
+                <button class="button_price" data-toggle="modal" data-target="#priceshow" onClick={this.openNav}>
                   Price details
                 </button>
                 <br />
-                <button class="button_order" onClick={this.OpenPayPage}>
+                <button class="button_order" data-toggle="modal" data-target={this.state.checkValue} onClick={this.openNav}>
                   Order
                 </button>
               </div>
@@ -377,87 +425,7 @@ class detail extends React.Component {
             </Flickity>
           </div>
         </div>
-        <div id="priceDetail">
-          <i class="closebtn fa fa-times fa-2x" onClick={this.closeNav}></i>
-          <div class="row">
-            <span class="titlePriceDetails">Price Details</span>
-          </div>
-          {this.state.ItemShop.map((item) => (
-            <div class="row">
-              <span class="items">{item.name} :</span>
-              <span class="price">{item.price}</span>
-            </div>
-          ))}
-          <hr class="lineTotal"></hr>
-          <span class="totalamount">Total amout :</span>
-          <span class="price"> {this.state.totalprice} $</span>
-        </div>
 
-        <div id="Order">
-          <div id="deletesection">
-            <i class="closebtn fa fa-times fa-2x" onClick={this.closeOrder}></i>
-            <div class="row ItemOrder">
-              <span class="titlePriceDetails">Price Details</span>
-            </div>
-            {this.state.ItemShop.map((item) => (
-              <div class="row">
-                <span class="items">{item.name} :</span>
-                <span class="price">{item.price}</span>
-              </div>
-            ))}
-            <hr class="lineTotal"></hr>
-            <span class="totalamount">Total amout :</span>
-            <span class="price"> {this.state.totalprice} $</span>
-            <br />
-            <button class="pay" onClick={this.RegisterForm}>
-              Pay now
-            </button>
-          </div>
-        </div>
-        <div id="test" class="formRegister">
-          <i class="closebtn fa fa-times fa-2x" onClick={this.closeOrder}></i>
-          <form class="addinformation">
-            <h6 for="Name">Name</h6>
-            <input
-              class="inputs"
-              type="text"
-              placeholder="Enter Name"
-              name="Name"
-              id="Name"
-              required
-            />
-            <br />
-            <h6 for="Email">Email</h6>
-            <input
-              class="inputs"
-              type="text"
-              placeholder="Enter Email"
-              name="Email"
-              id="Email"
-              required
-            />
-            <br />
-            <h6 for="number">Contact Number</h6>
-            <input
-              class="inputs"
-              type="text"
-              placeholder="Contact Number"
-              name="number"
-              id="number"
-              required
-            />
-            <br />
-            <h6 for="address">َAddress</h6>
-            <textarea
-              class=" inputsAddress"
-              type="text"
-              placeholder="Address"
-              name="address"
-              id="address"
-              required
-            />
-          </form>
-        </div>
         <div class="showImg" id="panelImg">
           <Flickity
             className={"carousel"} // default ''
@@ -471,7 +439,217 @@ class detail extends React.Component {
             <img class="setImgLarge" src={carpetTop} width="600" height="250" />
           </Flickity>
         </div>
-      </div>
+        <div class="modal fade" id="priceshow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="my-modal" >
+              <div >
+                <button type="button" class="close setsizetimes" data-dismiss="modal" aria-label="Close" onClick={this.closeNav}>
+                  <span class="times" aria-hidden="true">&times;</span>
+                </button>
+                <div class="priceForm">
+                  <div class="row ">
+                    <span class="titlePriceDetails">Price Details</span>
+                  </div>
+                  {this.state.ItemShop.map((item) => (
+                    <div class="row">
+                      <span class="items">{item.name} :</span>
+                      <span class="price">{item.price}</span>
+                    </div>
+                  ))}
+                  <hr class="lineTotal"></hr>
+                  <span class="totalamount">Total amout :</span>
+                  <span class="Tprice"> {this.state.totalprice} $</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="visa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" id="my-modal">
+              <div>
+                <button type="button" class="close setsizetimes" data-dismiss="modal" aria-label="Close">
+                  <span class="times" aria-hidden="true">&times;</span>
+                </button>
+                <div class="registerFormVisa">
+                  <form>
+                    <h6 class="titleformvisa" for="Name">Name<span class="starascii">&#42;</span></h6>
+                    <input
+                      class="visaInput"
+                      type="text"
+                      placeholder="Enter Name"
+                      name="Name"
+                      id="Name"
+                      required
+                    />
+                    <br />
+                    <h6  class="titleformvisa"for="Email">Email<span class="starascii">&#42;</span></h6>
+                    <input
+                      class="visaInput"
+                      type="text"
+                      placeholder="Enter Email"
+                      name="Email"
+                      id="Email"
+                      required
+                    />
+                    <h6 class="titleformvisa">Contact number<span class="starascii">&#42;</span></h6>
+                    <input type="text"
+                      class="visaInput">
+                    </input>
+                    <h6 class="titleformvisa">Tour date<span class="starascii">&#42;</span></h6>
+                    <div>
+                      <DayPicker
+                        defaultValue={'Day'}
+                        year={this.state.year}    // mandatory
+                        month={this.state.month}  // mandatory
+                        required={true}           // default is false
+                        value={this.state.day}    // mandatory
+                        onChange={(day) => {      // mandatory
+                          this.setState({ day });
+                          console.log(day);
+                        }}
+                        id={'day'}
+                        name={'day'}
+                        classes={'classes'}
+                        optionClasses={'option classes'}
+                        id="dropdownDateDay"
+                      />
+                      <MonthPicker
+                        defaultValue={'month'}
+                        year={this.state.year}    // mandatory
+                        required={true}           // default is false         
+                        value={this.state.month}  // mandatory
+                        onChange={(month) => {    // mandatory
+                          this.setState({ month });
+                          console.log(month);
+                        }}
+                        id={'month'}
+                        name={'month'}
+                        classes={'classes'}
+                        optionClasses={'option classes'}
+                        id="dropdownDateMonth"
+                      />
+
+                      <YearPicker
+                        defaultValue={'2020'}
+                        start={2020}                // default is 1900
+                        end={2020}                  // default is current year
+                        reverse                     // default is ASCENDING
+                        required={true}             // default is false            // default is false
+                        value={this.state.year}     // mandatory
+                        onChange={(year) => {       // mandatory
+                          this.setState({ year });
+                          console.log(year);
+                        }}
+                        id={'year'}
+                        name={'year'}
+                        classes={'classes'}
+                        optionClasses={'option classes'}
+                        id="dropdownDateYear"
+                      />
+                    </div>
+                    <h6 class="titleformvisa">Tour Time<span class="starascii">&#42;</span></h6>
+                    <select class="hour">
+                      <option selected disabled>hour</option>
+                      {this.state.hour.map((item) => (
+                        <option Value={item}>{item}</option>
+                      ))}
+                    </select>
+                    <select class="min">
+                      <option selected disabled>minutes</option>
+                      {this.state.minute.map((item) => (
+                        <option Value={item}>{item}</option>
+                      ))}
+                    </select>
+                    <button class="buttonVisa">submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="cash" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" id="my-modal">
+              <div>
+                <button type="button" class="close setsizetimes" data-dismiss="modal" aria-label="Close" onClick={this.closeNav}>
+                  <span class="times" aria-hidden="true">&times;</span>
+                </button>
+                <div class="registerFormCash">
+                  <div class="row ItemOrder">
+                    <span class="titlePriceDetails">Price Details</span>
+                  </div>
+                  {this.state.ItemShop.map((item) => (
+                    <div class="row">
+                      <span class="items">{item.name} :</span>
+                      <span class="price">{item.price}</span>
+                    </div>
+                  ))}
+                  <hr class="lineTotal"></hr>
+                  <span class="totalamount">Total amout :</span>
+                  <span class="price"> {this.state.totalprice} $</span>
+                  <br />
+                  <button class="pay" data-toggle="modal" data-target="#register" onClick={this.test}>
+                    Pay now
+            </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="register" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" id="my-modal">
+              <div>
+                <button type="button" class="close setsizetimes" data-dismiss="modal" aria-label="Close">
+                  <span class="times" aria-hidden="true">&times;</span>
+                </button>
+                <form class="addinformation">
+                  <h6 for="Name">Name</h6>
+                  <input
+                    class="inputs"
+                    type="text"
+                    placeholder="Enter Name"
+                    name="Name"
+                    id="Name"
+                    required
+                  />
+                  <br />
+                  <h6 for="Email">Email</h6>
+                  <input
+                    class="inputs"
+                    type="text"
+                    placeholder="Enter Email"
+                    name="Email"
+                    id="Email"
+                    required
+                  />
+                  <br />
+                  <h6 for="number">Contact Number</h6>
+                  <input
+                    class="inputs"
+                    type="text"
+                    placeholder="Contact Number"
+                    name="number"
+                    id="number"
+                    required
+                  />
+                  <br />
+                  <h6 for="address">َAddress</h6>
+                  <textarea
+                    class=" inputsAddress"
+                    type="text"
+                    placeholder="Address"
+                    name="address"
+                    id="address"
+                    required
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
     );
   }
 }

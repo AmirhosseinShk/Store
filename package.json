@@ -17,6 +17,8 @@
     "popper.js": "^1.16.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-dropdown-date": "^2.2.3",
+    "react-dropdown-timepicker": "^1.0.4",
     "react-flickity-component": "^3.5.0",
     "react-popper": "^2.2.3",
     "react-responsive-carousel": "^3.2.10",
