@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React, {Fragment}  from "react";
 import IconAboutUs from "./asstes/svg/Asset1.svg";
 import "./asstes/css/aboutUs.css";
 import Header from './Header.js';
+=======
+import React, {Fragment} from 'react';
+import Header from './header.js';
+import AboutPage from './aboutUsMain.js';
+>>>>>>> addVisa
 import Footer from './Footer.js';
 
 export default class AboutUs extends React.Component {

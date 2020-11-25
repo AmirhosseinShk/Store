@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, {Fragment} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Flickity from "react-flickity-component";
+=======
+import React, {Fragment} from 'react';
+import Header from './header.js';
+import MainPage from './MainPage.js';
+import Footer from './Footer.js';
+>>>>>>> addVisa
 
 import Header from './Header.js';
 import Footer from './Footer.js';
