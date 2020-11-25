@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import Header from './header.js';
 import LegalInfo from './legalInfoMain.js';
-import Footer from './footer.js';
+import Footer from './Footer.js';
 
 function legalInfo() {
     return (
