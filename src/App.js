@@ -1,19 +1,18 @@
 import React from "react";
-import Main from "./main.js";
-import Details from "./itemDetails.js";
-import AboutUs from "./aboutUs.js";
-import LegalInfo from "./legalInfo.js";
-import Policy from "./policy.js";
-import Questions from "./askQuestion.js";
-import shoppingItem from "./shoppingItem.js";
-import ResultOfSearch from "./resultOfSearch.js";
-import { BrowserRouter, Route } from "react-router-dom";
+import Main from "./Main.js";
+import Details from "./DetailPage.js";
+import AboutUs from "./AboutUs.js";
+import LegalInfo from "./LegalInfo.js";
+import Policy from "./Policy.js";
+import Questions from "./AskQuestion.js";
+import shoppingItem from "./ShoppingItem.js";
+import ResultOfSearch from "./Result.js";
 import ScrollToTop from './ScrollToTop.js';
+import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <Route exact path="/" component={Main}></Route>
       <ScrollToTop>
         <Route path="/Details" component={Details}></Route>
       </ScrollToTop>
@@ -23,6 +22,7 @@ function App() {
       <Route path="/Questions" component={Questions}></Route>
       <Route path="/ShoppingItem" component={shoppingItem}></Route>
       <Route path="/Result" component={ResultOfSearch}></Route>
+      <Route exact path="/" component={Main}></Route>
     </BrowserRouter>
   );
 }

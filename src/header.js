@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./asstes/css/Header.css";
 import "./asstes/css/global.css";
 import testShop from "./asstes/Photos/logo.svg";
 import "./asstes/icons/fontello/css/fontello.css";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory({ forceRefresh: true });
 
 export default class header extends React.Component {
   constructor(props) {
     super(props);
     this.openNav = this.openNav.bind(this);
     this.closeNav = this.closeNav.bind(this);
+    this.searhResult = this.searhResult.bind(this);
   }
 
   openNav() {
@@ -32,6 +37,16 @@ export default class header extends React.Component {
     x.setAttribute("id", null);
   }
 
+  searhResult(e) {
+    if (e.keyCode == 13) {
+      history.push({
+        pathname: "/Result",
+        search: '?search=' + e.target.value,
+        state: { detail: 'some_value' }
+      });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -48,6 +63,7 @@ export default class header extends React.Component {
                   id="zoneArea"
                   className="SelectZone col-9"
                   placeholder="&#xF002; Search for carpets, clothes and..."
+                  onKeyDown={this.searhResult}
                 ></input>
                 <div className=" col-3">
                   <button className="SearchButton" type="submit">
