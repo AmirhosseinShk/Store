@@ -28,8 +28,8 @@
 }
 
 #iconCenter {
-  margin-top: 35%;
-  font-size: 45px;
+  margin-top: 30%;
+  font-size: 3vw;
 }
 
 .setcolor {
@@ -100,6 +100,6 @@
 
 #titleCategories {
   margin-top: 15%;
-  font-size: medium;
+  font-size: 1.3vw;
   color: rgb(165, 169, 196);
 }

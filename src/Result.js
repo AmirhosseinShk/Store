@@ -1,13 +1,14 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-import Header from './Header.js';
-import Footer from './Footer.js';
+import Header from "./Header.js";
+import Footer from "./Footer.js";
 
 import carpet2 from "./asstes/Photos/carpet2.PNG";
 import noResult from "./asstes/svg/noResult.svg";
 
-import "./asstes/css/resultOfSearch.css";
+import "./asstes/css/Result.css";
 
 export default class Result extends React.Component {
   constructor(props) {
@@ -30,12 +31,13 @@ export default class Result extends React.Component {
         { icon: "fa icon-page-1", Name: "Handicrafts" },
       ],
       result: true,
-      searchConcept: data
+      searchConcept: data,
     };
   }
 
   componentDidMount() {
-    var urlDb = "http://localhost:8080/Server/rest/getCarpets" + this.state.searchConcept;
+    var urlDb =
+      "http://localhost:8080/Server/rest/getCarpets" + this.state.searchConcept;
     axios(urlDb).then(
       (result) => {
         var MostRecent = result.data.Carpets;
@@ -71,12 +73,18 @@ export default class Result extends React.Component {
             <div>
               <div class="row setsize ">
                 {this.state.Categories.map((item) => (
-                  <div class="col-3">
+                  <Link
+                    to={{
+                      pathname: "/Result",
+                      state: { searchData: item },
+                    }}
+                    class="col-sm-3 deleteUnderLink"
+                  >
                     <div class="setcolor">
                       <i class={item.icon} id="iconCenter"></i>
                       <h5 id="titleCategories">{item.Name}</h5>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <div class="row">
@@ -116,7 +124,13 @@ export default class Result extends React.Component {
                     <div>
                       <div class="row">
                         {this.state.items.map((item) => (
-                          <div className="col-md-4 cardMarginResult ">
+                          <Link
+                            to={{
+                              pathname: "/Details",
+                              state: { carpetDetails: item },
+                            }}
+                            className="col-sm-4 cardMarginResult deleteUnderLink"
+                          >
                             <div class="shopCardResult">
                               <p id="shopCardResultName">{item.name}</p>
                               <img
@@ -135,7 +149,7 @@ export default class Result extends React.Component {
                                 </button>
                               </div>
                             </div>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                       <div class="paging">

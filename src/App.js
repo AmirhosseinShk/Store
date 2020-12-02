@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Main from "./Main.js";
 import Details from "./DetailPage.js";
 import AboutUs from "./AboutUs.js";
@@ -7,7 +7,8 @@ import Policy from "./Policy.js";
 import Questions from "./AskQuestion.js";
 import shoppingItem from "./ShoppingItem.js";
 import ResultOfSearch from "./Result.js";
-import ScrollToTop from './ScrollToTop.js';
+import ScrollToTop from "./ScrollToTop.js";
+import Header from "./Header.js";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {

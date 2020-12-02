@@ -6,7 +6,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: "";
 }
 
 .itemCard {
@@ -36,8 +36,12 @@ select {
   box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
+.fixCardButton{
+  width: inherit;
+}
+
 #cardImage {
-  margin-left: 3%;
+  width: inherit;
 }
 
 #butplus {
@@ -230,8 +234,9 @@ select {
 
 .specifactionItem {
   font-size: 17px;
-  padding-left: 68%;
   color: rgb(165, 167, 175);
+  float: right;
+  margin-right: 5%;
 }
 
 .popular {
@@ -273,7 +278,7 @@ select {
   margin-left: 1%;
 }
 
-.Tprice{
+.Tprice {
   color: rgb(111, 32, 255);
   margin-left: 1%;
   font-weight: bold;
@@ -385,17 +390,22 @@ select {
   background-color: rgb(255, 255, 255);
 }
 
-.buttonImg{
+.blurImg {
   filter: blur(5px);
 }
 
-.buttonImgdiv{
-  position: relative;
+.subPhoto{
+  border-radius: 25%;
 }
 
-.addToImg{
+.buttonImgDiv {
+  position: relative;
+  padding-left: 0 !important;
+}
+
+.addToImg {
   position: absolute;
-  top:20%;
+  top: 20%;
   right: 40%;
   background-color: white;
   color: black;
@@ -404,14 +414,29 @@ select {
   text-align: center;
 }
 
+.marginLeft{
+  margin-left: 2% !important;
+}
 
-
-
-.buttonImg{
-  position: absolute;
-  top:25%;
-  right: 45%;
+.photoImageCard {
+  margin-left: 2% !important;
+  font-family: FontAwesome, IranSans;
+  resize: none;
+  border: 0px solid;
+  height: 100%;
+  width: 80%;
+  border-radius: 25px;
+  margin: auto;
   background-color: white;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.buttonImg {
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 25%;
+  right: 45%;
   color: black;
   border-radius: 5px;
   height: 50%;
@@ -419,7 +444,7 @@ select {
   text-align: center;
 }
 
-#panelImg{
+#panelImg {
   height: 40%;
   width: 0;
   position: fixed;
@@ -433,61 +458,59 @@ select {
   border-radius: 5px;
   font-family: sans-serif;
   text-align: center;
-  line-height: 1; 
- -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px); 
+  line-height: 1;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
-.setImgLarge{
+.setImgLarge {
   padding-right: 40%;
-  right:30%;
-  top:0;
-  left:20%;
-
+  right: 30%;
+  top: 0;
+  left: 20%;
 }
 
-.setcolor{
- 
+.setcolor {
 }
 
-.priceForm{
+.priceForm {
   margin-top: 10%;
   margin-bottom: 10%;
 }
 
-.registerFormVisa{
+.registerFormVisa {
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 15%;
   margin-bottom: 5%;
 }
 
-.setsizetimes{
+.setsizetimes {
   margin-right: 5%;
   margin-top: 1%;
 }
 
-.times{
+.times {
   font-size: 180%;
   color: black;
   padding-bottom: 12%;
-
 }
 
-#my-modal{
+#my-modal {
   width: 90%;
   border-radius: 25px;
 }
 
-.registerFormCash{
+.registerFormCash {
   margin-top: 50%;
 }
 
-.modal-open .container-fluid, .modal-open  .container {
+.modal-open .container-fluid,
+.modal-open .container {
   -webkit-filter: blur(5px) grayscale(90%);
 }
 
-.visaInput{
+.visaInput {
   width: 90%;
   padding-bottom: 4%;
   padding-top: 2%;
@@ -498,72 +521,72 @@ select {
   margin-bottom: 7%;
 }
 
-#dropdownDateYear{
-border-radius: 5px 15px 15px 5px;
-width: 30%;
-padding-top: 2.5%;
-padding-bottom: 2.5%;
-text-align: center;
-background-color: rgb(247, 247, 247) ;
-color: rgb(170, 169, 196);
-margin-bottom: 7%;
-margin-right: 1%;
+#dropdownDateYear {
+  border-radius: 5px 15px 15px 5px;
+  width: 30%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  margin-bottom: 7%;
+  margin-right: 1%;
 }
-#dropdownDateMonth{
-width: 30%;
-padding-top: 2.5%;
-padding-bottom: 2.5%;
-text-align: center;
-background-color: rgb(247, 247, 247) ;
-color: rgb(170, 169, 196);
-margin-bottom: 7%;
-margin-right: 1%;
+#dropdownDateMonth {
+  width: 30%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  margin-bottom: 7%;
+  margin-right: 1%;
 }
-#dropdownDateDay{
+#dropdownDateDay {
   border-radius: 15px 5px 5px 15px;
   width: 30%;
   padding-top: 2.5%;
   padding-bottom: 2.5%;
   text-align: center;
-  background-color: rgb(247, 247, 247) ;
+  background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   margin-bottom: 7%;
   margin-right: 1%;
-  }
+}
 
-.min{
+.min {
   border-radius: 5px 15px 15px 5px;
-width: 30%;
-padding-top: 2.5%;
-padding-bottom: 2.5%;
-text-align: center;
-background-color: rgb(247, 247, 247) ;
-color: rgb(170, 169, 196);
-margin-bottom: 7%;
-margin-right: 1%;
+  width: 30%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  margin-bottom: 7%;
+  margin-right: 1%;
 }
 
-.hour{
+.hour {
   border-radius: 15px 5px 5px 15px;
-width: 30%;
-padding-top: 2.5%;
-padding-bottom: 2.5%;
-text-align: center;
-background-color: rgb(247, 247, 247) ;
-color: rgb(170, 169, 196);
-margin-bottom: 7%;
-margin-right: 1%;
+  width: 30%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: center;
+  background-color: rgb(247, 247, 247);
+  color: rgb(170, 169, 196);
+  margin-bottom: 7%;
+  margin-right: 1%;
 }
 
-.titleformvisa{
+.titleformvisa {
   margin-bottom: 5%;
 }
 
-.starascii{
-  color:rgb(105, 31, 255); ;
+.starascii {
+  color: rgb(105, 31, 255);
 }
 
-.buttonVisa{
+.buttonVisa {
   margin-top: 25%;
   margin-left: 1%;
   margin-bottom: 5%;
@@ -578,7 +601,5 @@ margin-right: 1%;
 .visaInput:focus {
   background-color: white;
   color: black;
-  border:1px solid rgb(105, 31, 255);
+  border: 1px solid rgb(105, 31, 255);
 }
-
-

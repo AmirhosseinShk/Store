@@ -6,11 +6,11 @@
   }
   
   .setsize{
-      padding-left: 40%;
+      padding-left: 25%;
       padding-right: 25%;
       margin-bottom: 5%;
   }
-  .shopCardShopping {
+  .shopCardResult {
     font-family: FontAwesome, IranSans;
     resize: none;
     border: 0px solid;
@@ -22,7 +22,7 @@
     box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
   }
 
-  #shopCardShoppingName {
+  #shopCardResultName {
     padding-top: 10%;
     margin-left: 10%;
     text-align: left;

@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import React, {Fragment}  from "react";
+import React, { Fragment } from "react";
 import IconAboutUs from "./asstes/svg/Asset1.svg";
 import "./asstes/css/aboutUs.css";
-import Header from './Header.js';
-=======
-import React, {Fragment} from 'react';
-import Header from './header.js';
-import AboutPage from './aboutUsMain.js';
->>>>>>> addVisa
-import Footer from './Footer.js';
+import Header from "./Header.js";
+import Footer from "./Footer.js";
 
 export default class AboutUs extends React.Component {
   render() {
@@ -18,7 +12,7 @@ export default class AboutUs extends React.Component {
         <div>
           <div class="main">
             <div class="row">
-              <div class="col-4">
+              <div class="col-sm-4">
                 <img
                   class="IconAboutUs"
                   width="150"
@@ -27,7 +21,7 @@ export default class AboutUs extends React.Component {
                   alt="Icon About Us"
                 ></img>
               </div>
-              <div class="col-8 textAboutUs">
+              <div class="col-sm-8 textAboutUs">
                 <h4>About us</h4>
                 <p class="paboutus">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

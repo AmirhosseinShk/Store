@@ -12,7 +12,7 @@ export default class LegalInfo extends React.Component {
         <div>
           <div class="main">
             <div class="row">
-              <div class="col-4">
+              <div class="col-sm-4">
                 <img
                   class="IconLegalInfo"
                   width="200"
@@ -21,7 +21,7 @@ export default class LegalInfo extends React.Component {
                   alt="Icon Legal Info"
                 ></img>
               </div>
-              <div class="col-8 textLegalInfo">
+              <div class="col-sm-8 textLegalInfo">
                 <h4>Legal Info</h4>
                 <p class="pLegalInfo">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

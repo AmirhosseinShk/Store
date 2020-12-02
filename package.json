@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@popperjs/core": "^2.5.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -19,7 +21,7 @@
     "react-dom": "^16.14.0",
     "react-dropdown-date": "^2.2.3",
     "react-dropdown-timepicker": "^1.0.4",
-    "react-flickity-component": "^3.5.0",
+    "react-flickity-component": "^3.6.0",
     "react-popper": "^2.2.3",
     "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.2.0",

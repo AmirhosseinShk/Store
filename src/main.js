@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React, {Fragment} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Flickity from "react-flickity-component";
-=======
-import React, {Fragment} from 'react';
-import Header from './header.js';
-import MainPage from './MainPage.js';
-import Footer from './Footer.js';
->>>>>>> addVisa
 
 import Header from './Header.js';
 import Footer from './Footer.js';
@@ -102,23 +95,24 @@ class MainPage extends React.Component {
         <Header></Header>
         <div class="main">
           <div class="row" style={{ height: "80%" }}>
-            <div class="col-9">
+            <div class="col-sm-9">
               <img
                 class="HorizontalImge"
                 src={LargeHorizontal}
                 alt="picture1"
               ></img>
               <div class="row">
-                <div class="col-9">
+                <div class="col-sm-9">
                   <h4 class="category">Categories</h4>
                   <div class="row">
                     {this.state.Categories.map((item) => (
                       <Link
                         to={{
                           pathname: "/Result",
-                          state: { searchData: item },
+                          search: "?search=" + item.Name ,                        
+                          state: { searchData: item},
                         }}
-                        class="col-3 deleteUnderLink"
+                        class="col-sm-3 deleteUnderLink"
                       >
                         <div class="setcolor">
                           <i class={item.icon} id="iconCenter"></i>
@@ -128,7 +122,7 @@ class MainPage extends React.Component {
                     ))}
                   </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3">
                   <img
                     class="HorizontalImge2"
                     src={SmallHorizontal}
@@ -137,7 +131,7 @@ class MainPage extends React.Component {
                 </div>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-sm-3">
               <img class="VerticalImge" src={Vertical} alt="picture1"></img>
             </div>
           </div>
@@ -154,7 +148,7 @@ class MainPage extends React.Component {
             >
               {this.state.mostRecentCarpets.map((item) => (
                 <Link
-                  to={{ pathname: "/Details", state: { carpetDetails: item } }}
+                  to={{ pathname: "/Details"  , search: "?details=" + item.name + "&id=" + item.id }}
                   className="col-md-3 deleteUnderLink"
                 >
                   <div class="shopCard">
@@ -184,7 +178,7 @@ class MainPage extends React.Component {
             >
               {this.state.popularCarpets.map((item) => (
                 <Link
-                  to={{ pathname: "/Details", state: { carpetDetails: item } }}
+                  to={{ pathname: "/Details", search: "?details=" + item.name  , state: { carpetDetails: item} }}
                   className="col-md-3 deleteUnderLink"
                 >
                   <div class="shopCard">

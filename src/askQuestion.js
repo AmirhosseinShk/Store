@@ -49,7 +49,7 @@ export default class AskQuestion extends React.Component {
         <div>
           <div class="main" onClick={this.OpenMessage}>
             <div class="row">
-              <div class="col-4">
+              <div class="col-sm-4">
                 <img
                   class="IconLegalInfo"
                   width="200"
@@ -58,12 +58,12 @@ export default class AskQuestion extends React.Component {
                   alt="Icon Ask Question"
                 ></img>
               </div>
-              <div class="col-8 textAskQuestion">
+              <div class="col-sm-8 textAskQuestion">
                 <h4>Submit your Request</h4>
                 <p class="pAskQuestion">
                   Ask any question you have and leave your contact info here.
                 </p>
-                <textarea class="typeQuestion" placeholder="Example"></textarea>
+                <textarea class="typeQuestion" placeholder="Example" rows="5" cols="23"></textarea>
                 <button
                   class="submitButton"
                   value="bsubmitt"

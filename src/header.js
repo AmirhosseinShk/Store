@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import "./asstes/css/Header.css";
 import "./asstes/css/global.css";
@@ -12,9 +14,18 @@ const history = createBrowserHistory({ forceRefresh: true });
 export default class header extends React.Component {
   constructor(props) {
     super(props);
+    var searchValue = null;
+    if (window.location.href.split("search=")[1] != undefined) {
+      var searchValue = decodeURI(window.location.href.split("search=")[1]);
+    }
+    this.state = {
+      carpets: ["Iranian Carpet", "Tabriz Carpet", "Esfehan Carpet"],
+      searchDefaultValue: searchValue,
+    };
     this.openNav = this.openNav.bind(this);
     this.closeNav = this.closeNav.bind(this);
     this.searhResult = this.searhResult.bind(this);
+    this.searhResultClick = this.searhResultClick.bind(this);
   }
 
   openNav() {
@@ -41,10 +52,16 @@ export default class header extends React.Component {
     if (e.keyCode == 13) {
       history.push({
         pathname: "/Result",
-        search: '?search=' + e.target.value,
-        state: { detail: 'some_value' }
+        search: "?search=" + e.target.value,
       });
     }
+  }
+
+  searhResultClick(e , v) {
+      history.push({
+        pathname: "/Result",
+        search: "?search=" + v,
+      });
   }
 
   render() {
@@ -52,20 +69,37 @@ export default class header extends React.Component {
       <div>
         <div className="header">
           <div className="row">
-            <Link to={{ pathname: "/" }} className="headerImage col-2">
+            <Link to={{ pathname: "/" }} className="headerImage col-sm-2">
               <img src={testShop} />
             </Link>
 
-            <div className="searchBorder col-5" style={{ marginTop: "0" }}>
+            <div className="searchBorder col-sm-5" style={{ marginTop: "0" }}>
               <div className="row" id="border">
-                <input
+                {/* <input
                   type="text"
                   id="zoneArea"
                   className="SelectZone col-9"
                   placeholder="&#xF002; Search for carpets, clothes and..."
                   onKeyDown={this.searhResult}
-                ></input>
-                <div className=" col-3">
+                ></input> */}
+                <Autocomplete
+                  id="combo-box-demo"
+                  className="SelectZone col-9"
+                  options={this.state.carpets}
+                  getOptionLabel={(option) => option}
+                  onChange={this.searhResultClick}
+                  defaultValue={this.state.searchDefaultValue}
+                  style={{ width: 300 }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="&#xF002; Search for carpets, clothes and..."
+                      variant="outlined"
+                      onKeyDown={this.searhResult}
+                    />
+                  )}
+                />
+                <div className="col-3 margintop-sm">
                   <button className="SearchButton" type="submit">
                     <Link to={{ pathname: "/ShoppingItem" }}>
                       <i class="fas icon-cart" id="SearchButtonicon"></i>
@@ -74,7 +108,7 @@ export default class header extends React.Component {
                 </div>
               </div>
             </div>
-            <button id="MenuItem" className="col">
+            <button id="MenuItem" className="col-sm">
               <i
                 class="MenuBar fas icon-burger-menu"
                 onClick={this.openNav}
@@ -85,7 +119,7 @@ export default class header extends React.Component {
         <div id="mySidenav" class="sidenav">
           <i class="closebtn fa fa-times fa-2x" onClick={this.closeNav}></i>
           <div class="row ShowMenu">
-            <div class="col-6 marginlist">
+            <div class="col-sm-6 marginlist">
               <h3>Products</h3>
               <a class="item" href="#">
                 Clothes
@@ -103,7 +137,7 @@ export default class header extends React.Component {
                 Bags
               </a>
             </div>
-            <div class="col-6">
+            <div class="col-sm-6 marginlist">
               <h3>About Us</h3>
               <Link
                 to={{ pathname: "/AboutUs" }}
@@ -128,7 +162,7 @@ export default class header extends React.Component {
             </div>
           </div>
           <div class="row ShowMenu ">
-            <div class="col-6 ">
+            <div class="col-sm-6 marginlist">
               <h3>Support</h3>
               <a class="item" href="#">
                 Condition

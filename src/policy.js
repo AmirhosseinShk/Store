@@ -12,7 +12,7 @@ export default class Policy extends React.Component {
         <div>
           <div class="main">
             <div class="row">
-              <div class="col-4">
+              <div class="col-sm-4">
                 <img
                   class="IconPolicy"
                   width="180"
@@ -21,7 +21,7 @@ export default class Policy extends React.Component {
                   alt="Icon Policy"
                 ></img>
               </div>
-              <div class="col-8 textPolicy">
+              <div class="col-sm-8 textPolicy">
                 <h4>Policy</h4>
                 <p class="pPolicy">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
