@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import IconAboutUs from "./asstes/svg/Asset2.svg";
 import "./asstes/css/legalInfo.css";
 import Header from "./Header.js";
@@ -10,20 +10,20 @@ export default class LegalInfo extends React.Component {
       <Fragment>
         <Header></Header>
         <div>
-          <div class="main">
-            <div class="row">
-              <div class="col-sm-4">
+          <div className="main">
+            <div className="row">
+              <div className="col-sm-4">
                 <img
-                  class="IconLegalInfo"
+                  className="IconLegalInfo"
                   width="200"
                   height="260"
                   src={IconAboutUs}
                   alt="Icon Legal Info"
                 ></img>
               </div>
-              <div class="col-sm-8 textLegalInfo">
-                <h4>Legal Info</h4>
-                <p class="pLegalInfo">
+              <div className="col-sm-8 textLegalInfo">
+                <h4>легальная информация</h4>
+                <p className="pLegalInfo">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco

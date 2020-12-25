@@ -6,7 +6,10 @@ import { YearPicker, MonthPicker, DayPicker } from "react-dropdown-date";
 
 import Header from "./Header.js";
 import Footer from "./Footer.js";
+import configData from "./config.json";
+import { addToStorage, removeFromStorage } from "./JsonHelperFunction.js";
 
+import "./asstes/css/global.css";
 import "./asstes/css/detailPage.css";
 import "flickity/css/flickity.css";
 
@@ -31,40 +34,48 @@ const flickityOptions = {
   //pauseAutoPlayOnHover: false,
 };
 
-function filmin(arr) {
+function filmin() {
+  var arr = new Array();
   for (var i = 1; i < 61; i++) {
     arr[i - 1] = i;
   }
-  console.log(arr);
   return arr;
 }
 
-function filhour(arr) {
+function filhour() {
+  var arr = new Array();
   for (var i = 1; i < 24; i++) {
     arr[i - 1] = i;
   }
   arr[23] = "00";
-  console.log(arr);
   return arr;
 }
 
 class DetailPage extends React.Component {
   constructor(props) {
     super(props);
-    const carpetDetails = props.location.search;
-    var id = carpetDetails.split("id=")[1];
+    var id = this.props.match.params.id;
+    var Items = localStorage.getItem("ShoppingItems");
+    var ShoppingItems;
+    if (Items == null) {
+      ShoppingItems = new Array();
+      localStorage.setItem("ShoppingItems", JSON.stringify(ShoppingItems));
+      localStorage.setItem("totalPrice", 0);
+    } else {
+      ShoppingItems = JSON.parse(Items);
+      var totalPrice = 0;
+      for (let i = 0; i < ShoppingItems.length; i++) {
+        totalPrice += ShoppingItems[i].price;
+      }
+    }
     this.state = {
-      ItemShop: [
-        { name: "test", price: "75.000$" },
-        { name: "test", price: "75.000$" },
-        { name: "test", price: "75.000$" },
-        { name: "test", price: "75.000$" },
-      ],
-      totalprice: 0.0,
+      ItemShop: ShoppingItems,
+      itemDetails: "",
       Brand: "test",
       Inventory: "test",
       DeliveryTime: "test",
       CarpetName: "test",
+      CarpetPrice: "999999",
       SrcImage: "",
       SrcImages: [],
       CarpetPrice: 0,
@@ -74,25 +85,23 @@ class DetailPage extends React.Component {
       carpetSize: [],
       id: id,
       attributes: "",
-      checkValue: "",
       year: null,
       month: null,
       day: null,
-      minute: [],
-      hour: [],
+      minute: new Array(),
+      hour: new Array(),
+      totalPrice: totalPrice,
     };
-    this.changIcon = this.changIcon.bind(this);
-    this.openNav = this.openNav.bind(this);
-    this.OpenPayPage = this.OpenPayPage.bind(this);
-    this.closeNav = this.closeNav.bind(this);
-    this.RegisterForm = this.RegisterForm.bind(this);
-    this.ShowImgLarge = this.ShowImgLarge.bind(this);
     this.setValueCheckbox = this.setValueCheckbox.bind(this);
-    this.CloseShowImgLarge = this.CloseShowImgLarge.bind(this);
+    this.changSelectedItemBeforLoadPage = this.changSelectedItemBeforLoadPage.bind(
+      this
+    );
+    console.log("const");
+    console.log(this.state.itemDetails);
   }
 
   componentDidMount() {
-    var urlDb = "http://localhost:8080/Server/rest/getPopularCarpet";
+    var urlDb = configData.SERVER_URL + "getPopularCarpet";
     axios(urlDb).then(
       (result) => {
         var popular = result.data.Carpets;
@@ -104,13 +113,75 @@ class DetailPage extends React.Component {
         console.log(error);
       }
     );
-    console.log(this.state.popularCarpets);
 
-    var urlDb = "http://localhost:8080/Server/rest/getCarpet/" + this.state.id;
+    var urlDb = configData.SERVER_URL + "getCarpet/" + this.state.id;
     axios(urlDb).then(
       (result) => {
         var details = result.data;
+        var sizeItem = new Array();
+        for (var j = 0; j < details.size.length; j++) {
+          sizeItem.push(details.size[j]);
+        }
+
+        var srcImageItem = new Array();
+        for (var j = 0; j < details.imageSrcs.length; j++) {
+          srcImageItem.push(details.imageSrcs[j]);
+        }
+
+        var attributes = JSON.parse(details.attributes);
+        console.log("sssss");
         console.log(details);
+        this.setState({
+          carpetSize: sizeItem,
+          attributes: attributes,
+          Brand: details.brand,
+          DeliveryTime: details.deliveryTime,
+          Inventory: details.Inventory,
+          CarpetName: details.name,
+          CarpetPrice: details.price,
+          CarpetPrice: details.price,
+          SrcImage: details.imageSrc,
+          SrcImages: details.imageSrcs,
+          CarpetDisPrice: details.discountPrice,
+          itemDetails: details,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.refreshFlickity();
+    var arrmin = filmin();
+    var arrhour = filhour();
+    this.setState({ minute: arrmin });
+    this.setState({ hour: arrhour });
+    console.log("did");
+    console.log(this.state.itemDetails);
+  }
+
+  componentDidUpdate() {
+    this.changSelectedItemBeforLoadPage();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    var currentID = nextProps.match.params.id;
+    var urlDb = configData.SERVER_URL + "getPopularCarpet";
+    axios(urlDb).then(
+      (result) => {
+        var popular = result.data.Carpets;
+        this.setState({
+          popularCarpets: popular,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    var urlDb = configData.SERVER_URL + "getCarpet/" + currentID;
+    axios(urlDb).then(
+      (result) => {
+        var details = result.data;
         var sizeItem = new Array();
         for (var j = 0; j < details.size.length; j++) {
           sizeItem.push(details.size[j]);
@@ -131,9 +202,12 @@ class DetailPage extends React.Component {
           Inventory: details.Inventory,
           CarpetName: details.name,
           CarpetPrice: details.price,
+          CarpetPrice: details.price,
           SrcImage: details.imageSrc,
           SrcImages: details.imageSrcs,
           CarpetDisPrice: details.discountPrice,
+          itemDetails: details,
+          id: currentID,
         });
       },
       (error) => {
@@ -145,6 +219,33 @@ class DetailPage extends React.Component {
     var arrhour = filhour(this.state.hour);
     this.setState({ minute: arrmin });
     this.setState({ hour: arrhour });
+    console.log("will");
+    console.log(this.state.itemDetails);
+  }
+
+  changSelectedItemBeforLoadPage() {
+    var Items = localStorage.getItem("ShoppingItems");
+    var ShoppingItems = JSON.parse(Items);
+    var isFind = false;
+    for (let i = 0; i < ShoppingItems.length; i++) {
+      var item = ShoppingItems[i];
+      if (item.id == this.state.id) {
+        isFind = true;
+      }
+      var elements = document.querySelectorAll("[id='" + item.id + "']");
+      for (let j = 0; j < elements.length; j++) {
+        var element = elements[j];
+        var shopCardButton = element.parentElement;
+        element.setAttribute("class", "fa fa-times");
+        shopCardButton.style.background = "rgb(255,0,94)";
+      }
+    }
+    if (!isFind) {
+      var element = document.getElementById(this.state.id);
+      var shopCardButton = element.parentElement;
+      element.setAttribute("class", "fa fa-plus");
+      shopCardButton.style.background = "#651fff";
+    }
   }
 
   refreshFlickity() {
@@ -155,141 +256,43 @@ class DetailPage extends React.Component {
     this.setState({ checkValue: "#" + event.target.value });
   }
 
-  changIcon() {
-    var classname = document.getElementById("butplus").classList;
-    if (classname[1] == "fa-plus") {
-      document.getElementById("butplus").setAttribute("class", "fa fa-times");
-      document.getElementById("shopCardButton").style.background =
-        "rgb(255,0,94)";
-      document
-        .getElementById("NewItem")
-        .setAttribute("class", "fa fa-circle fa-xs");
-    } else {
-      document.getElementById("butplus").setAttribute("class", "fa fa-plus");
-      document.getElementById("shopCardButton").style.background = "#651fff";
-      document.getElementById("NewItem").setAttribute("class", "");
+  changIcon(event, item) {
+    var butplusItem = event.target;
+    var totalPrice = this.state.totalPrice;
+    if (event.target.id == "shopCardButton") {
+      butplusItem = event.target.firstChild;
     }
-  }
-
-  ShowImgLarge() {
-    var x = document.getElementsByClassName("header")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByClassName("main")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByClassName("MainFooter")[0];
-    x.setAttribute("id", "blur");
-    console.log(document.getElementById("panelImg"));
-    document.getElementById("panelImg").style.width = "45%";
-  }
-
-  CloseShowImgLarge() {
-    var x = document.getElementsByClassName("header")[0];
-    x.setAttribute("id", null);
-    var x = document.getElementsByClassName("main")[0];
-    x.setAttribute("id", null);
-    var x = document.getElementsByClassName("MainFooter")[0];
-    x.setAttribute("id", null);
-    console.log(document.getElementById("panelImg"));
-    document.getElementById("panelImg").style.width = "0";
-  }
-
-  openNav() {
-    var x = document.getElementsByClassName("header")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByClassName("main")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByClassName("MainFooter")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByName("PaymentMethods");
-    var totalPrice = 0.0;
-    for (var i = 0; i < this.state.ItemShop.length; i++) {
-      totalPrice = totalPrice + parseFloat(this.state.ItemShop[i].price);
-    }
-    this.setState({ totalprice: totalPrice });
-    /*var lengthX = x.length;
-    var selectRadio = "";
-    for (var i = 0; i < lengthX; i++) {
-      if (x[i].checked) {
-        console.log(x[i].value);
-        selectRadio = x[i].value;
+    var elements = document.querySelectorAll("[id='" + butplusItem.id + "']");
+    var reapeted = false;
+    for (let j = 0; j < elements.length; j++) {
+      var butplus = elements[j];
+      var shopCardButton = butplus.parentElement;
+      if (butplus.classList[1] == "fa-plus") {
+        if (!reapeted) {
+          var ShoppingItems = localStorage.getItem("ShoppingItems");
+          var resItems = addToStorage(ShoppingItems, item);
+          localStorage.setItem("ShoppingItems", resItems);
+          totalPrice += item.price;
+          reapeted = true;
+        }
+        butplus.setAttribute("class", "fa fa-times");
+        shopCardButton.style.background = "rgb(255,0,94)";
+      } else {
+        if (!reapeted) {
+          var ShoppingItems = localStorage.getItem("ShoppingItems");
+          var resItems = removeFromStorage(ShoppingItems, item);
+          totalPrice -= item.price;
+          localStorage.setItem("ShoppingItems", resItems);
+          reapeted = true;
+        }
+        butplus.setAttribute("class", "fa fa-plus");
+        shopCardButton.style.background = "#651fff";
       }
     }
-
-    if (selectRadio == "cash") {
-      document.getElementById("priceDetail").style.width = "35%";
-      document
-        .getElementById("priceDetail")
-        .setAttribute("class", "shadowbackground");
-    }*/
-  }
-
-  OpenPayPage() {
-    var x = document.getElementsByClassName("header")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByClassName("main")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByClassName("MainFooter")[0];
-    x.setAttribute("id", "blur");
-    var x = document.getElementsByName("PaymentMethods");
-    var totalPrice = 0.0;
-    for (var i = 0; i < this.state.ItemShop.length; i++) {
-      totalPrice = totalPrice + parseFloat(this.state.ItemShop[i].price);
-    }
-    this.setState({ totalprice: totalPrice });
-    var lengthX = x.length;
-    var selectRadio = "";
-    for (var i = 0; i < lengthX; i++) {
-      if (x[i].checked) {
-        console.log(x[i].value);
-        selectRadio = x[i].value;
-      }
-    }
-
-    if (selectRadio == "cash") {
-      document.getElementById("Order").style.width = "35%";
-      document
-        .getElementById("Order")
-        .setAttribute("class", "shadowbackground");
-    }
-  }
-
-  closeNav() {
-    var x = document.getElementsByClassName("header")[0];
-    x.setAttribute("id", null);
-    var x = document.getElementsByClassName("main")[0];
-    x.setAttribute("id", null);
-    var x = document.getElementsByClassName("MainFooter")[0];
-    x.setAttribute("id", null);
-  }
-
-  closeOrder() {
-    var before = document.getElementById("test");
-    var btn = document.getElementById("deletesection");
-    before.parentNode.replaceChild(btn, before);
-    document.getElementById("Order").style.width = "0";
-    document.getElementById("Order").setAttribute("class", "");
-    var x = document.getElementsByClassName("header")[0];
-    x.setAttribute("id", null);
-    var x = document.getElementsByClassName("main")[0];
-    x.setAttribute("id", null);
-    var x = document.getElementsByClassName("MainFooter")[0];
-    x.setAttribute("id", null);
-  }
-
-  RegisterForm() {
-    var y = document.getElementById("deletesection");
-    var yy = [];
-    yy.push(y);
-    this.setState({ deleteElement: yy });
-    var x = document.getElementById("test");
-    y.parentNode.replaceChild(x, y);
-  }
-
-  test() {
-    const modal = document.getElementsByClassName("modal")[2];
-    modal.style.display = "block";
-    modal.style.display = "none";
-    modal.setAttribute("class", " ");
+    this.state = {
+      totalPrice: totalPrice,
+      ItemShop: localStorage.getItem("ShoppingItems"),
+    };
   }
 
   render() {
@@ -297,54 +300,62 @@ class DetailPage extends React.Component {
       <Fragment>
         <Header></Header>
         <div>
-          <div class="main">
-            <div class="row itemCard">
-              <div class="col-sm-5 cardMarginProduct">
-                <div class="shopCardProduct producePhoto">
+          <div className="main">
+            <div className="row itemCard">
+              <div className="col-sm-5 cardMarginProduct">
+                <div className="shopCardProduct producePhoto">
                   <div className="row fixCardButton">
-                    <button id="shopCardButton" onClick={this.changIcon}>
-                      <i id="butplus" class="fas fa-plus"></i>
+                    <button
+                      id="shopCardButton"
+                      onClick={(e) => this.changIcon(e, this.state.itemDetails)}
+                    >
+                      <i id={this.state.id} className="fas fa-plus"></i>
                     </button>
                   </div>
                   {/* <div id="shopCardImage" className="row"> */}
                   <img id="cardImage" src={carpetTop}></img>
                   {/* </div> */}
-                  <div class="row">
-                    <div class="col marginLeft subPhotoMargin">
+                  <div className="row">
+                    <div className="col marginLeft subPhotoMargin">
                       <img className="subPhoto" src={littleCarpet}></img>
                     </div>
-                    <div class="col subPhotoMargin">
+                    <div className="col subPhotoMargin">
                       <img className="subPhoto" src={littleCarpet}></img>
                     </div>
-                    <div class="col subPhotoMargin">
+                    <div className="col subPhotoMargin">
                       <img className="subPhoto" src={littleCarpet}></img>
                     </div>
-                    <div class="col buttonImgDiv subPhotoMargin">
+                    <div className="col buttonImgDiv subPhotoMargin">
                       <img
                         className="subPhoto blurImg"
                         src={littleCarpet}
                       ></img>
-                      <button class="buttonImg" onClick={this.ShowImgLarge}>
+                      <button
+                        className="buttonImg"
+                        data-toggle="modal"
+                        data-target="#LargeImage"
+                      >
                         ...
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-3 productText cardMarginProduct">
-                <h2>Persian carpet / no44</h2>
-                <div class="setBrand">
-                  <span>Brand : </span>
-                  <span class="colorText">{this.state.Brand}</span>
-                  <span class="setInventory">Inventory : </span>
-                  <span class="colorText">{this.state.Inventory}</span>
+              <div className="col-sm-3 productText cardMarginProduct">
+                <h2>{this.state.CarpetName}</h2>
+                <div className="setBrand">
+                  <span>марка : </span> {/*Brand*/}
+                  <span className="colorText">{this.state.Brand}</span>
+                  <span className="setInventory">инвентарь : </span>{" "}
+                  {/*Inventory*/}
+                  <span className="colorText">{this.state.Inventory}</span>
                 </div>
                 <div>
-                  <span>Delivery time : </span>
-                  <span class="colorText">{this.state.DeliveryTime}</span>
+                  <span>срок поставки : </span> {/*Delivery time*/}
+                  <span className="colorText">{this.state.DeliveryTime}</span>
                 </div>
-                <div class="setSize">
-                  <span>Size :</span>
+                <div className="setSize">
+                  <span>размер :</span> {/*Size*/}
                   <br />
                   <i className="down"></i>
                   <select id="sizeList" className="SelectButton" name="CityBox">
@@ -353,23 +364,23 @@ class DetailPage extends React.Component {
                     ))}
                   </select>
                 </div>
-                <button class="live_tour" onClick={this.openNav}>
-                  Live tour
+                <button className="live_tour" onClick={this.openNav}>
+                  живой тур {/*Live tour*/}
                 </button>
               </div>
-              <div class="col-sm-4 cardMarginProduct">
-                <div class="shopCardProduct payment">
+              <div className="col-sm-4 cardMarginProduct">
+                <div className="shopCardProduct payment">
                   <div className="row">
                     <button className="ml-auto mr-3" id="shopCardButton2">
-                      <span>785.000 ₽</span>
+                      <span>{this.state.CarpetPrice}</span>
                     </button>
                   </div>
-                  <h5 class="paymentMethod">Payment Method :</h5>
-                  <form class="checkbox">
+                  <h5 className="paymentMethod">Способ оплаты :</h5>
+                  <form className="checkbox" onChange={this.setValueCheckbox}>
                     <input
-                      class="radioBox radioMaster"
+                      className="radioBox radioMaster"
                       type="radio"
-                      name="PaymentMethods"
+                      name="paymentMethod"
                       value="Master-card"
                     />
                     <label class="paymentLable" for="Master-card">
@@ -378,54 +389,64 @@ class DetailPage extends React.Component {
                     </label>
                     <br />
                     <input
-                      class="radioBox radioMaster"
+                      className="radioBox radioMaster"
                       type="radio"
-                      name="PaymentMethods"
+                      name="paymentMethod"
                       value="paypal"
                     />
-                    <label class="paymentLable" for="Paypal">
+                    <label className="paymentLable" for="Paypal">
                       {" "}
                       Paypal
                     </label>
                     <br />
                     <input
-                      class="radioBox radioMaster"
+                      className="radioBox radioMaster"
                       type="radio"
-                      name="PaymentMethods"
+                      name="paymentMethod"
                       value="visa"
                     />
-                    <label class="paymentLable" for="Visa">
+                    <label className="paymentLable" for="Visa">
                       Visa
                     </label>
                     <br />
                     <input
-                      class="radioBox radioMaster"
+                      className="radioBox radioMaster"
                       type="radio"
-                      name="PaymentMethods"
+                      name="paymentMethod"
                       value="cash"
                     />
-                    <label class="paymentLable" for="Master-card">
-                      Cash
+                    <label className="paymentLable" for="Master-card">
+                      наличные
                     </label>
                     <br />
                   </form>
-                  <button class="button_price" onClick={this.openNav}>
-                    Price details
+                  <button
+                    className="button_price"
+                    data-toggle="modal"
+                    data-target="#priceshow"
+                    // onClick={this.openNav}
+                  >
+                    детали цены
                   </button>
                   <br />
-                  <button class="button_order" onClick={this.OpenPayPage}>
-                    Order
+                  <button
+                    className="button_order"
+                    data-toggle="modal"
+                    data-target={this.state.checkValue}
+                    // onClick={this.openNav}
+                  >
+                    заказ
                   </button>
                 </div>
               </div>
             </div>
-            <h5 class="specifaction">Specifactions</h5>
-            <div class="row ">
+            <h5 className="specifaction">Характеристики</h5>
+            <div className="row ">
               {Object.keys(this.state.attributes).map((key) => (
-                <div class="col-sm-6">
-                  <div class="Specifactions">
-                    <span class="title">{key}</span>
-                    <span class="specifactionItem">
+                <div className="col-sm-6">
+                  <div className="Specifactions">
+                    <span className="title">{key}</span>
+                    <span className="specifactionItem">
                       {this.state.attributes[key]}
                     </span>
                   </div>
@@ -433,7 +454,7 @@ class DetailPage extends React.Component {
               ))}
             </div>
             <div className="popular">
-              <h4>Popular products</h4>
+              <h4>популярный продукт</h4>
               <Flickity
                 flickityRef={(c) => (this.flkty = c)}
                 className={"carousel"} // default ''
@@ -444,206 +465,157 @@ class DetailPage extends React.Component {
                 static={false} // default false
               >
                 {this.state.popularCarpets.map((item) => (
-                  <Link
-                    to={{ pathname: "/Details", state: { area: item } }}
-                    className="col-md-3 deleteUnderLink"
-                  >
-                    <div class="shopCardProduct">
-                      <p id="shopCardName">{item.name}</p>
-                      <img id="shopCardImage" src={carpet}></img>
+                  <div className="col-md-3">
+                    <div className="shopCardProduct">
+                      <Link
+                        to={{
+                          pathname: "/Details/" + item.id,
+                          search: "?details=" + item.name,
+                        }}
+                        className="deleteUnderLink"
+                      >
+                        <p id="shopCardName">{item.name}</p>
+                        <img id="shopCardImage" src={carpet}></img>
+                      </Link>
                       <div className="row shopCardRow">
                         <span id="shopCardPrice">{item.price} ₽</span>
-                        <button className="ml-auto mr-3" id="shopCardButton">
-                          <i class="fas fa-plus"></i>
+                        <button
+                          className="ml-auto mr-3"
+                          id="shopCardButton"
+                          onClick={(e) => this.changIcon(e, item)}
+                        >
+                          <i id={item.id} class="fas fa-plus"></i>
                         </button>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </Flickity>
             </div>
           </div>
-          <div id="priceDetail">
-            <i class="closebtn fa fa-times fa-2x" onClick={this.closeNav}></i>
-            <div class="row">
-              <span class="titlePriceDetails">Price Details</span>
-            </div>
-            {this.state.ItemShop.map((item) => (
-              <div class="row">
-                <span class="items">{item.name} :</span>
-                <span class="price">{item.price}</span>
-              </div>
-            ))}
-            <hr class="lineTotal"></hr>
-            <span class="totalamount">Total amout :</span>
-            <span class="price"> {this.state.totalprice} $</span>
-          </div>
-
-          <div id="Order">
-            <div id="deletesection">
-              <i
-                class="closebtn fa fa-times fa-2x"
-                onClick={this.closeOrder}
-              ></i>
-              <div class="row ItemOrder">
-                <span class="titlePriceDetails">Price Details</span>
-              </div>
-              {this.state.ItemShop.map((item) => (
-                <div class="row">
-                  <span class="items">{item.name} :</span>
-                  <span class="price">{item.price}</span>
-                </div>
-              ))}
-              <hr class="lineTotal"></hr>
-              <span class="totalamount">Total amout :</span>
-              <span class="price"> {this.state.totalprice} $</span>
-              <br />
-              <button class="pay" onClick={this.RegisterForm}>
-                Pay now
-              </button>
-            </div>
-          </div>
-          <div id="test" class="formRegister">
-            <i class="closebtn fa fa-times fa-2x" onClick={this.closeOrder}></i>
-            <form class="addinformation">
-              <h6 for="Name">Name</h6>
-              <input
-                class="inputs"
-                type="text"
-                placeholder="Enter Name"
-                name="Name"
-                id="Name"
-                required
-              />
-              <br />
-              <h6 for="Email">Email</h6>
-              <input
-                class="inputs"
-                type="text"
-                placeholder="Enter Email"
-                name="Email"
-                id="Email"
-                required
-              />
-              <br />
-              <h6 for="number">Contact Number</h6>
-              <input
-                class="inputs"
-                type="text"
-                placeholder="Contact Number"
-                name="number"
-                id="number"
-                required
-              />
-              <br />
-              <h6 for="address">َAddress</h6>
-              <textarea
-                class=" inputsAddress"
-                type="text"
-                placeholder="Address"
-                name="address"
-                id="address"
-                required
-              />
-            </form>
-          </div>
-          <div class="showImg" id="panelImg">
-            <button onClick={this.CloseShowImgLarge}> close </button>
-            <Flickity
-              className={"carousel"} // default ''
-              elementType={"div"} // default 'div'
-              options={flickityOptions} // takes flickity options {}
-              disableImagesLoaded={false} // default false
-              reloadOnUpdate // default false
+          <div
+            className="modal fade"
+            id="LargeImage"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <button
+              type="button"
+              className="close setsizetimes"
+              data-dismiss="modal"
+              aria-label="Close"
             >
-              <img
-                class="setImgLarge"
-                width="600"
-                height="250"
-                src={carpetTop}
-              />
-              <img
-                class="setImgLarge"
-                src={carpetTop}
-                width="600"
-                height="250"
-              />
-              <img
-                class="setImgLarge"
-                src={carpetTop}
-                width="600"
-                height="250"
-              />
-            </Flickity>
+              <span className="times" aria-hidden="true">
+                &times;
+              </span>
+            </button>
+            <div
+              className="modal-dialog modal-dialog-centered modal-my-image"
+              role="document"
+            >
+              <div className="modal-content" id="my-modal-image">
+                <div>
+                  <Flickity
+                    className={"carousel LargeImage"} // default ''
+                    elementType={"div"} // default 'div'
+                    options={flickityOptions} // takes flickity options {}
+                    disableImagesLoaded={false} // default false
+                    reloadOnUpdate // default false
+                  >
+                    <img
+                      className="setImgLarge"
+                      width="800"
+                      height="400"
+                      src={carpetTop}
+                    />
+                    <img
+                      className="setImgLarge"
+                      src={carpetTop}
+                      width="800"
+                      height="400"
+                    />
+                    <img
+                      className="setImgLarge"
+                      src={carpetTop}
+                      width="800"
+                      height="400"
+                    />
+                  </Flickity>
+                </div>
+              </div>
+            </div>
           </div>
           <div
-            class="modal fade"
+            className="modal fade"
             id="priceshow"
             tabindex="-1"
             role="dialog"
             aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content" id="my-modal">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content" id="my-modal">
                 <div>
                   <button
                     type="button"
-                    class="close setsizetimes"
+                    className="close setsizetimes"
                     data-dismiss="modal"
                     aria-label="Close"
-                    onClick={this.closeNav}
                   >
                     <span class="times" aria-hidden="true">
                       &times;
                     </span>
                   </button>
-                  <div class="priceForm">
-                    <div class="row ">
-                      <span class="titlePriceDetails">Price Details</span>
+                  <div className="priceForm">
+                    <div className="row">
+                      <span className="titlePriceDetails">детали цены</span>
                     </div>
                     {this.state.ItemShop.map((item) => (
-                      <div class="row">
-                        <span class="items">{item.name} :</span>
-                        <span class="price">{item.price}</span>
+                      <div className="row">
+                        <div class="col text-center">
+                          <span className="itemsCash">{item.name} :</span>
+                          <span className="price">{item.price} ₽</span>
+                        </div>
                       </div>
                     ))}
-                    <hr class="lineTotal"></hr>
-                    <span class="totalamount">Total amout :</span>
-                    <span class="Tprice"> {this.state.totalprice} $</span>
+                    <hr className="lineTotal"></hr>
+                    <span className="totalamount">Итого :</span>
+                    <span className="Tprice"> {this.state.totalPrice} ₽</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="modal fade"
+            className="modal fade"
             id="visa"
             tabindex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content" id="my-modal">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content" id="my-modal">
                 <div>
                   <button
                     type="button"
-                    class="close setsizetimes"
+                    className="close setsizetimes"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
-                    <span class="times" aria-hidden="true">
+                    <span className="times" aria-hidden="true">
                       &times;
                     </span>
                   </button>
-                  <div class="registerFormVisa">
+                  <div className="registerFormVisa">
                     <form>
-                      <h6 class="titleformvisa" for="Name">
-                        Name<span class="starascii">&#42;</span>
+                      <h6 className="titleformvisa" for="Name">
+                        название <span className="starascii">&#42;</span>
                       </h6>
                       <input
-                        class="visaInput"
+                        className="visaInput"
                         type="text"
                         placeholder="Enter Name"
                         name="Name"
@@ -651,23 +623,25 @@ class DetailPage extends React.Component {
                         required
                       />
                       <br />
-                      <h6 class="titleformvisa" for="Email">
-                        Email<span class="starascii">&#42;</span>
+                      <h6 className="titleformvisa" for="Email">
+                        электронное письмо
+                        <span className="starascii">&#42;</span>
                       </h6>
                       <input
-                        class="visaInput"
+                        className="visaInput"
                         type="text"
                         placeholder="Enter Email"
                         name="Email"
                         id="Email"
                         required
                       />
-                      <h6 class="titleformvisa">
-                        Contact number<span class="starascii">&#42;</span>
+                      <h6 className="titleformvisa">
+                        Контактный телефон
+                        <span className="starascii">&#42;</span>
                       </h6>
-                      <input type="text" class="visaInput"></input>
-                      <h6 class="titleformvisa">
-                        Tour date<span class="starascii">&#42;</span>
+                      <input type="text" className="visaInput"></input>
+                      <h6 className="titleformvisa">
+                        Дата<span className="starascii">&#42;</span>
                       </h6>
                       <div>
                         <DayPicker
@@ -679,7 +653,6 @@ class DetailPage extends React.Component {
                           onChange={(day) => {
                             // mandatory
                             this.setState({ day });
-                            console.log(day);
                           }}
                           id={"day"}
                           name={"day"}
@@ -695,7 +668,6 @@ class DetailPage extends React.Component {
                           onChange={(month) => {
                             // mandatory
                             this.setState({ month });
-                            console.log(month);
                           }}
                           id={"month"}
                           name={"month"}
@@ -714,7 +686,6 @@ class DetailPage extends React.Component {
                           onChange={(year) => {
                             // mandatory
                             this.setState({ year });
-                            console.log(year);
                           }}
                           id={"year"}
                           name={"year"}
@@ -723,26 +694,26 @@ class DetailPage extends React.Component {
                           id="dropdownDateYear"
                         />
                       </div>
-                      <h6 class="titleformvisa">
-                        Tour Time<span class="starascii">&#42;</span>
+                      <h6 className="titleformvisa">
+                        время<span class="starascii">&#42;</span>
                       </h6>
-                      <select class="hour">
+                      <select className="hour">
                         <option selected disabled>
-                          hour
+                          час
                         </option>
                         {this.state.hour.map((item) => (
                           <option Value={item}>{item}</option>
                         ))}
                       </select>
-                      <select class="min">
+                      <select className="min">
                         <option selected disabled>
-                          minutes
+                          минута
                         </option>
                         {this.state.minute.map((item) => (
                           <option Value={item}>{item}</option>
                         ))}
                       </select>
-                      <button class="buttonVisa">submit</button>
+                      <button className="buttonVisa">представить</button>
                     </form>
                   </div>
                 </div>
@@ -750,48 +721,52 @@ class DetailPage extends React.Component {
             </div>
           </div>
           <div
-            class="modal fade"
+            className="modal fade"
             id="cash"
             tabindex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content" id="my-modal">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content" id="my-modal">
                 <div>
                   <button
                     type="button"
-                    class="close setsizetimes"
+                    className="close setsizetimes"
                     data-dismiss="modal"
                     aria-label="Close"
                     onClick={this.closeNav}
                   >
-                    <span class="times" aria-hidden="true">
+                    <span className="times" aria-hidden="true">
                       &times;
                     </span>
                   </button>
-                  <div class="registerFormCash">
-                    <div class="row ItemOrder">
-                      <span class="titlePriceDetails">Price Details</span>
+                  <div className="registerFormCash">
+                    <div className="row ItemOrder">
+                      <span className="titlePriceDetails">детали цены</span>
                     </div>
                     {this.state.ItemShop.map((item) => (
-                      <div class="row">
-                        <span class="items">{item.name} :</span>
-                        <span class="price">{item.price}</span>
+                      <div className="row">
+                        <div class="col text-center">
+                          <span className="itemsCash">{item.name} :</span>
+                          <span className="price">{item.price} ₽</span>
+                        </div>
                       </div>
                     ))}
-                    <hr class="lineTotal"></hr>
-                    <span class="totalamount">Total amout :</span>
-                    <span class="price"> {this.state.totalprice} $</span>
+                    <hr className="lineTotal"></hr>
+                    <span className="totalamountCash">Итого :</span>
+                    <span className="price totalamountCash">
+                      {" "}
+                      {this.state.totalPrice} ₽
+                    </span>
                     <br />
                     <button
-                      class="pay"
+                      className="pay"
                       data-toggle="modal"
                       data-target="#register"
-                      onClick={this.test}
                     >
-                      Pay now
+                      платить
                     </button>
                   </div>
                 </div>
@@ -799,50 +774,56 @@ class DetailPage extends React.Component {
             </div>
           </div>
           <div
-            class="modal fade"
+            className="modal fade"
             id="register"
             tabindex="-2"
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content" id="my-modal">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content" id="my-modal">
                 <div>
                   <button
                     type="button"
-                    class="close setsizetimes"
+                    className="close setsizetimes"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
-                    <span class="times" aria-hidden="true">
+                    <span className="times" aria-hidden="true">
                       &times;
                     </span>
                   </button>
-                  <form class="addinformation">
-                    <h6 for="Name">Name</h6>
+                  <form className="addinformation">
+                    <h6 className="inputsLable" for="Name">
+                      название
+                    </h6>
                     <input
-                      class="inputs"
+                      className="inputs"
                       type="text"
-                      placeholder="Enter Name"
+                      placeholder="Matthew"
                       name="Name"
                       id="Name"
                       required
                     />
                     <br />
-                    <h6 for="Email">Email</h6>
+                    <h6 className="inputsLable" for="Email">
+                      электронное письмо
+                    </h6>
                     <input
-                      class="inputs"
+                      className="inputs"
                       type="text"
-                      placeholder="Enter Email"
+                      placeholder="matyousefian@yahoo.com"
                       name="Email"
                       id="Email"
                       required
                     />
                     <br />
-                    <h6 for="number">Contact Number</h6>
+                    <h6 className="inputsLable" for="number">
+                      Контактный телефон
+                    </h6>
                     <input
-                      class="inputs"
+                      className="inputs"
                       type="text"
                       placeholder="Contact Number"
                       name="number"
@@ -850,9 +831,11 @@ class DetailPage extends React.Component {
                       required
                     />
                     <br />
-                    <h6 for="address">َAddress</h6>
+                    <h6 className="inputsLable" for="address">
+                      адрес
+                    </h6>
                     <textarea
-                      class=" inputsAddress"
+                      className=" inputsAddress"
                       type="text"
                       placeholder="Address"
                       name="address"
@@ -860,6 +843,9 @@ class DetailPage extends React.Component {
                       required
                     />
                   </form>
+                  <button className="submit" data-toggle="modal">
+                    представить
+                  </button>
                 </div>
               </div>
             </div>

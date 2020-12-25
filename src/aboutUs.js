@@ -10,20 +10,20 @@ export default class AboutUs extends React.Component {
       <Fragment>
         <Header></Header>
         <div>
-          <div class="main">
-            <div class="row">
-              <div class="col-sm-4">
+          <div className="main">
+            <div className="row">
+              <div className="col-sm-4">
                 <img
-                  class="IconAboutUs"
+                  className="IconAboutUs"
                   width="150"
                   height="210"
                   src={IconAboutUs}
                   alt="Icon About Us"
                 ></img>
               </div>
-              <div class="col-sm-8 textAboutUs">
-                <h4>About us</h4>
-                <p class="paboutus">
+              <div className="col-sm-8 textAboutUs">
+                <h4>насчет нас</h4>
+                <p className="paboutus">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco

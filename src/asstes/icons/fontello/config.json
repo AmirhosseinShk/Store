@@ -35,34 +35,6 @@
       ]
     },
     {
-      "uid": "af4bcc11151ae9cd0f5306982a1bf291",
-      "css": "asset-1",
-      "code": 59399,
-      "src": "custom_icons",
-      "selected": true,
-      "svg": {
-        "path": "",
-        "width": 3630
-      },
-      "search": [
-        "asset-1"
-      ]
-    },
-    {
-      "uid": "de8b238f888d7e014c0bf9ada6cc0204",
-      "css": "plus",
-      "code": 59398,
-      "src": "custom_icons",
-      "selected": true,
-      "svg": {
-        "path": "",
-        "width": 1000
-      },
-      "search": [
-        "plus"
-      ]
-    },
-    {
       "uid": "f65e5e92e0c4d67c172fd43807a41f3b",
       "css": "page-1",
       "code": 59397,
@@ -105,20 +77,6 @@
       ]
     },
     {
-      "uid": "ea5d0d2f67bf244dfcd6b40904066e74",
-      "css": "close",
-      "code": 59394,
-      "src": "custom_icons",
-      "selected": true,
-      "svg": {
-        "path": "",
-        "width": 1000
-      },
-      "search": [
-        "close"
-      ]
-    },
-    {
       "uid": "8a1e98b15ea7ddbe5efc31543672aa2a",
       "css": "checked",
       "code": 59393,
@@ -144,6 +102,20 @@
       },
       "search": [
         "cart"
+      ]
+    },
+    {
+      "uid": "d21f1da04adf2a2b189a6fc799f9499b",
+      "css": "close",
+      "code": 59402,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M30.6 30.6L969.4 969.4M969.4 30.6L30.6 969.4M30.6 30.6L969.4 969.4M969.4 30.6L30.6 969.4",
+        "width": 1000
+      },
+      "search": [
+        "close"
       ]
     }
   ]

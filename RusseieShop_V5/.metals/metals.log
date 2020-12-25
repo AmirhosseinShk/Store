@@ -1,0 +1,12 @@
+2020.11.18 22:21:11 INFO  Started: Metals version 0.9.5 in workspace 'D:\Work\Tavally\RusseieShop' for client vscode.
+2020.11.18 22:21:14 INFO  time: initialize in 3.08s
+2020.11.18 22:21:17 WARN  Build server is not auto-connectable.
+2020.11.18 22:21:17 WARN  no build tool detected in workspace 'D:\Work\Tavally\RusseieShop'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Nov 18, 2020 11:28:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.11.19 01:27:00 INFO  shutting down Metals
+2020.11.19 21:32:23 INFO  Started: Metals version 0.9.5 in workspace 'D:\Work\Tavally\RusseieShop' for client vscode.
+2020.11.19 21:32:35 INFO  time: initialize in 11s
+2020.11.19 21:32:38 WARN  Build server is not auto-connectable.
+2020.11.19 21:32:38 WARN  no build tool detected in workspace 'D:\Work\Tavally\RusseieShop'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.11.20 01:33:34 INFO  shutting down Metals

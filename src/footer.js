@@ -25,53 +25,65 @@ function footer() {
         </div>
 
         <div class="col-sm-auto" id="SpaceFooters">
-          <spam class="headerOfFooter">Products</spam>
+          <span class="headerOfFooter">товар</span>
           <br class="line" />
           <a href="#" class="ItemFooter deleteUnderLink">
-            Clothes
+            ткани
           </a>
           <br class="line" />
           <a href="#" class="ItemFooter deleteUnderLink">
-            Carpet
+            ковер
           </a>
           <br class="line" />
           <a href="#" class="ItemFooter deleteUnderLink">
-            Handicrafts
+            Ремесла
           </a>
           <br class="line" />
           <a href="#" class="ItemFooter deleteUnderLink">
-            Bags
+            сумки
           </a>
         </div>
         <div class="col-sm-auto" id="SpaceFooters">
-          <spam class="headerOfFooter">About us</spam>
+          <span class="headerOfFooter">насчет нас</span>
           <br class="line" />
-          <Link to={{ pathname: "/AboutUs" }} className="ItemFooter deleteUnderLink">
-            Introduction
+          <Link
+            to={{ pathname: "/AboutUs" }}
+            className="ItemFooter deleteUnderLink"
+          >
+            введение
           </Link>
           <br class="line" />
-          <Link to={{ pathname: "/LegalInfo" }} className="ItemFooter deleteUnderLink">
-            Legal Info
+          <Link
+            to={{ pathname: "/LegalInfo" }}
+            className="ItemFooter deleteUnderLink"
+          >
+            легальная информация
           </Link>
           <br class="line" />
-          <Link to={{ pathname: "/Policy" }} className="ItemFooter deleteUnderLink">
-            Policy
+          <Link
+            to={{ pathname: "/Policy" }}
+            className="ItemFooter deleteUnderLink"
+          >
+            политика
           </Link>
         </div>
         <div class="col-sm-auto" id="SpaceFooters">
-          <spam class="headerOfFooter">Support</spam>
+          <span class="headerOfFooter">Поддержка</span>
           <br class="line" />
           <a href="#" class="ItemFooter deleteUnderLink">
-            Conditions
+            условия
           </a>
           <br class="line" />
-          <Link to={{ pathname: "/Questions" }} className="ItemFooter deleteUnderLink">
-            FAQ
+          <Link
+            to={{ pathname: "/Questions" }}
+            className="ItemFooter deleteUnderLink"
+          >
+            часто задаваемые вопросы
           </Link>
         </div>
 
         <div class="col-sm-auto" id="SpaceFooters">
-          <spam class="headerOfFooter">Payment</spam>
+          <span class="headerOfFooter">оплата</span>
           <br class="line" />
           <a href="#" class="ItemFooter deleteUnderLink">
             Visa

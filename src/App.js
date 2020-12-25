@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Main from "./Main.js";
 import Details from "./DetailPage.js";
 import AboutUs from "./AboutUs.js";
@@ -8,14 +8,13 @@ import Questions from "./AskQuestion.js";
 import shoppingItem from "./ShoppingItem.js";
 import ResultOfSearch from "./Result.js";
 import ScrollToTop from "./ScrollToTop.js";
-import Header from "./Header.js";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop>
-        <Route path="/Details" component={Details}></Route>
+        <Route path="/Details/:id" component={Details}></Route>
       </ScrollToTop>
       <Route path="/AboutUs" component={AboutUs}></Route>
       <Route path="/LegalInfo" component={LegalInfo}></Route>

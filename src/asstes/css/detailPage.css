@@ -36,7 +36,7 @@ select {
   box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.fixCardButton{
+.fixCardButton {
   width: inherit;
 }
 
@@ -270,7 +270,7 @@ select {
 }
 
 .items {
-  margin-left: 38%;
+  margin-left: 41%;
 }
 
 .price {
@@ -285,19 +285,22 @@ select {
 }
 
 .titlePriceDetails {
-  margin-left: 38%;
+  font-size: large;
+  margin: auto;
   margin-bottom: 2%;
 }
 
 .lineTotal {
-  margin-top: 5%;
-  margin-right: 37%;
-  width: 30%;
-  color: black;
+  margin-top: 7%;
+  width: 50%;
 }
 
 .totalamount {
-  margin-left: 33%;
+  font-size: large;
+}
+
+.totalamountCash{
+  font-size: x-large;
 }
 
 #Order {
@@ -315,7 +318,6 @@ select {
 
 .pay {
   margin-top: 35%;
-  margin-left: 24%;
   margin-bottom: 5%;
   background-color: rgb(105, 31, 255);
   color: white;
@@ -323,6 +325,18 @@ select {
   padding-top: 2%;
   padding-bottom: 2%;
   border-radius: 25px;
+}
+
+.submit {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 20%;
+  background-color: rgb(105, 31, 255);
+  color: white;
+  width: 60%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 15px;
 }
 
 .ItemOrder {
@@ -335,14 +349,23 @@ select {
 
 .addinformation {
   width: 100%;
-  margin-top: 10%;
-  margin-left: 0%;
-  margin-bottom: 65%;
+  margin-top: 15%;
+  margin-left: 15%;
+  margin-bottom: 13%;
 }
 
 .closebtn {
   margin-top: 10%;
   margin-left: 82%;
+}
+
+.inputsLable {
+  margin-top: 5%;
+}
+
+.inputsLable:after {
+  content:"*";
+  color: rgb(105, 31, 255);;
 }
 
 .inputs {
@@ -355,28 +378,15 @@ select {
   border-radius: 5px;
 }
 
-.inputs:focus {
-  background-color: white;
-  color: black;
-  border-color: red;
-}
-
 .inputsAddress {
   display: block;
   width: 70%;
-  rows: 4;
-  padding-bottom: 2%;
-  padding-top: 2%;
+  padding-bottom: 12%;
   background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   border: none;
   border-radius: 5px;
-}
-
-.inputsAddress:focus {
-  background-color: white;
-  color: black;
-  border-color: red;
+  resize: none;
 }
 
 #test {
@@ -394,7 +404,7 @@ select {
   filter: blur(5px);
 }
 
-.subPhoto{
+.subPhoto {
   border-radius: 25%;
 }
 
@@ -414,7 +424,7 @@ select {
   text-align: center;
 }
 
-.marginLeft{
+.marginLeft {
   margin-left: 2% !important;
 }
 
@@ -444,23 +454,8 @@ select {
   text-align: center;
 }
 
-#panelImg {
-  height: 40%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  right: 25%;
-  top: 30%;
-  border: none;
-  overflow-x: hidden;
-  transition: 0.5s;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-  font-family: sans-serif;
-  text-align: center;
-  line-height: 1;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+.LargeImage {
+  margin-top: 10%;
 }
 
 .setImgLarge {
@@ -470,12 +465,14 @@ select {
   left: 20%;
 }
 
-.setcolor {
+.priceForm {
+  text-align: center;
+  margin-top: 15%;
+  margin-bottom: 10%;
 }
 
-.priceForm {
-  margin-top: 10%;
-  margin-bottom: 10%;
+.priceFormItem{
+  margin-bottom: 1.5%;
 }
 
 .registerFormVisa {
@@ -497,12 +494,31 @@ select {
 }
 
 #my-modal {
-  width: 90%;
+  width: 100%;
   border-radius: 25px;
+  margin: auto;
+}
+
+#my-modal-image {
+  width: 100%;
+  border-radius: 25px;
+  margin: auto;
+  border: none !important;
+  background: none !important;
+  margin-top: 20% !important;
+}
+
+.modal-my-image{
+  margin-top: 5% !important;
+}
+
+.flickity-button{
+
 }
 
 .registerFormCash {
-  margin-top: 50%;
+  text-align: center;
+  margin-top: 40%;
 }
 
 .modal-open .container-fluid,
