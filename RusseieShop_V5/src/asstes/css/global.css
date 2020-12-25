@@ -1,0 +1,251 @@
+@import url("fontiran.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: IRANSans;
+  font-weight: 200;
+  min-height: 100%;
+  height: auto;
+}
+
+.deleteUnderLink {
+  text-decoration: none !important;
+  color: black;
+}
+
+.tab {
+  margin-right: 5vw;
+}
+
+.doubletab {
+  margin-right: 10vw;
+}
+
+.PrivateNotchedOutline-root-1 {
+  border-style: inherit !important;
+}
+.MuiFormLabel-root {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif, FontAwesome !important;
+}
+.flickity-enabled {
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.flickity-button {
+  border: 1px solid #fff !important;
+  background: #efeeee !important;
+  border-radius: 20% !important;
+  height: 18% !important;
+  text-align: right;
+}
+
+.flickity-button-icon {
+  left: 10% !important;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 80% !important;
+  height: 80% !important;
+}
+
+.next {
+  text-align: left !important;
+}
+
+.flickity-viewport {
+  overflow-x: clip !important;
+  overflow-y: inherit !important;
+}
+
+.modal-open {
+  padding-right: 0px !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border: 2px solid rgb(105, 31, 255);
+}
+
+[type="radio"]:checked ::before {
+  background: green;
+  box-shadow: 0 0 0 0.25em #000;
+}
+
+select#sizeList {
+  border: 0px;
+  outline: 0px;
+}
+
+@media (max-width: 978px) {
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .header {
+    width: auto;
+  }
+
+  .headerImage {
+    margin-left: 4%;
+  }
+
+  .marginlist {
+    padding-left: 0 !important;
+  }
+
+  .SelectZone {
+    margin-top: 5%;
+    height: 80%;
+  }
+
+  .SearchButton {
+    width: auto;
+  }
+
+  .margintop-sm {
+    margin-top: 5%;
+  }
+
+  .MuiFormLabel-root {
+    font-size: 3vw !important;
+  }
+
+  .MuiSvgIcon-root {
+    margin-left: 100% !important;
+  }
+
+  .addPrice{
+    margin-right: 0 !important;
+  }
+
+  .marginTopResult{
+    margin-top: 10%;
+  }
+
+  .subPhotoMargin {
+    margin: 3.5%;
+  }
+
+  .cardMarginProduct {
+    margin-top: 10% !important;
+    margin-bottom: 10% !important;
+  }
+
+  .productText {
+    margin-left: 5%;
+  }
+
+  .checkbox {
+    width: 80% !important;
+  }
+
+  .Specifactions {
+    width: 100% !important;
+  }
+
+  .h4 {
+    font-size: 3vw !important;
+  }
+
+  .IconAboutUs {
+    margin: auto !important;
+    display: block !important;
+  }
+
+  .IconLegalInfo {
+    margin: auto !important;
+    display: block !important;
+  }
+
+  .IconPolicy {
+    margin: auto !important;
+    display: block !important;
+  }
+
+  .paboutus {
+    padding-right: 0 !important;
+  }
+
+  .pLegalInfo {
+    padding-right: 0 !important;
+  }
+
+  .pPolicy {
+    padding-right: 0 !important;
+  }
+
+  .typeQuestion {
+    width: 100% !important;
+  }
+
+  .submitButton {
+    margin-top: 5%;
+    margin-left: 40% !important;
+    width: 25vw !important;
+    height: 7vh !important;
+    border-radius: 18px;
+    background-color: rgb(101, 31, 255);
+    color: white;
+  }
+
+  .flickity-button {
+    border: 1px solid #fff !important;
+    background: #efeeee !important;
+    border-radius: 20% !important;
+    width: 9% !important;
+    height: 12% !important;
+    text-align: right;
+  }
+
+  body {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  #titleCategories {
+    font-size: 10vw !important;
+  }
+
+  #iconCenter {
+    font-size: 20vw !important;
+  }
+
+  #SpaceFooter {
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  #SpaceFooters {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .setcolor {
+    height: auto !important;
+  }
+}

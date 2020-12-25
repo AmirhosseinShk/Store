@@ -1,0 +1,49 @@
+.MainFooter {
+  background-color: rgb(247, 247, 247);
+  margin: 5%;
+  color: rgb(173, 171, 176);
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#SpaceFooter {
+  font-size: 18px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 6%;
+}
+
+.information {
+  margin-left: 7%;
+}
+
+.information2 {
+  margin-left: 4%;
+}
+
+.information3{
+  margin-left: 2%;
+}
+
+#SpaceFooters {
+  font-size: 18px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 1%;
+}
+
+.headerOfFooter {
+  color: #651FFF; 
+  font-weight: bold;
+  font-family: IRANSans;
+}
+
+.ItemFooter {
+  color: rgb(173, 171, 176);
+}
+
+.line {
+  margin-bottom: 2%;
+}
