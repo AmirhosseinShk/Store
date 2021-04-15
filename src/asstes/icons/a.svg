@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62.2" height="62.2" viewBox="0 0 62.2 62.2">
+  <defs>
+    <clipPath id="clip-a">
+      <rect width="62.2" height="62.2"/>
+    </clipPath>
+  </defs>
+  <g id="a" clip-path="url(#clip-a)">
+    <g id="Group_329" data-name="Group 329" transform="translate(0 0)">
+      <g id="Group_18" data-name="Group 18" transform="translate(31.1 0) rotate(45)">
+        <line id="Line_4" data-name="Line 4" x2="43.982" transform="translate(0 21.991)" fill="none" stroke="#2a2f44" stroke-linecap="round" stroke-width="3"/>
+        <line id="Line_5" data-name="Line 5" x2="43.982" transform="translate(21.991 43.982) rotate(-90)" fill="none" stroke="#2a2f44" stroke-linecap="round" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

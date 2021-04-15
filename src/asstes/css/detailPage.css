@@ -40,8 +40,16 @@ select {
   width: inherit;
 }
 
+.marginBot {
+  margin-bottom: 5%;
+}
+
 #cardImage {
   width: inherit;
+  display: block;
+  margin: auto;
+  margin-top: auto;
+  margin-top: 2%;
 }
 
 #butplus {
@@ -65,13 +73,17 @@ select {
   padding-left: 8%;
 }
 
+.detailsHeader {
+  font-size: 1.5vw;
+}
+
 .setBrand {
   margin-top: 15%;
   margin-bottom: 5%;
 }
 
 .setInventory {
-  padding-left: 20%;
+  padding-left: 15%;
 }
 
 .setSize {
@@ -145,6 +157,7 @@ select {
   border-top-right-radius: 25px;
   background-color: #651fff;
   color: white;
+  border: none;
 }
 
 #shopCardButton {
@@ -156,6 +169,19 @@ select {
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   background-color: #651fff;
+  border: none;
+}
+
+#shopCardButton3 {
+  margin-left: 3%;
+  float: left;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #651fff;
+  border: none;
 }
 
 .checkbox {
@@ -205,15 +231,12 @@ select {
   margin-top: 10%;
   margin-left: 7%;
   color: rgb(111, 32, 254);
-}
-
-.paymentLable {
-  margin-left: 7%;
+  font-weight: bold;
 }
 
 .specifaction {
   margin-top: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 .Specifactions {
@@ -299,7 +322,7 @@ select {
   font-size: large;
 }
 
-.totalamountCash{
+.totalamountCash {
   font-size: x-large;
 }
 
@@ -316,15 +339,21 @@ select {
   background-color: rgb(255, 255, 255);
 }
 
-.pay {
+.online {
   margin-top: 35%;
+  color: rgb(105, 31, 255);
+}
+
+.pay {
   margin-bottom: 5%;
+  margin-top: 5%;
   background-color: rgb(105, 31, 255);
   color: white;
   width: 50%;
   padding-top: 2%;
   padding-bottom: 2%;
   border-radius: 25px;
+  border: none;
 }
 
 .submit {
@@ -337,6 +366,7 @@ select {
   padding-top: 2%;
   padding-bottom: 2%;
   border-radius: 15px;
+  border: none;
 }
 
 .ItemOrder {
@@ -354,9 +384,23 @@ select {
   margin-bottom: 13%;
 }
 
-.closebtn {
-  margin-top: 10%;
-  margin-left: 82%;
+.closebtnDetailsPage {
+  width: 100%;
+  height: 50%;
+}
+
+.closebutton {
+  border: 1px solid #fff !important;
+  background: #efeeee !important;
+  border-radius: 20% !important;
+  margin-top: 1%;
+  margin-right: 2%;
+  width: 4%;
+  height: 8%;
+}
+
+.modalBlur {
+  -webkit-filter: blur(8px);
 }
 
 .inputsLable {
@@ -364,8 +408,8 @@ select {
 }
 
 .inputsLable:after {
-  content:"*";
-  color: rgb(105, 31, 255);;
+  content: "*";
+  color: rgb(105, 31, 255);
 }
 
 .inputs {
@@ -376,6 +420,7 @@ select {
   color: rgb(170, 169, 196);
   border: none;
   border-radius: 5px;
+  padding-left: 2%;
 }
 
 .inputsAddress {
@@ -387,6 +432,7 @@ select {
   border: none;
   border-radius: 5px;
   resize: none;
+  padding-left: 2%;
 }
 
 #test {
@@ -402,10 +448,21 @@ select {
 
 .blurImg {
   filter: blur(5px);
+  width: inherit;
 }
 
 .subPhoto {
   border-radius: 25%;
+}
+
+.photoCard {
+  border: 0px solid;
+  border-radius: 25%;
+  width: 90%;
+  margin-left: 2% !important;
+  margin: auto;
+  background-color: white;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .buttonImgDiv {
@@ -443,26 +500,59 @@ select {
 
 .buttonImg {
   border: none;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.82);
   position: absolute;
   top: 25%;
-  right: 45%;
+  right: 40%;
   color: black;
   border-radius: 5px;
   height: 50%;
-  width: 30%;
+  width: 35%;
   text-align: center;
 }
 
+.buttonImgResize {
+  border: none;
+  background: rgba(255, 255, 255, 0.82);
+  position: absolute;
+  top: 25%;
+  right: 1%;
+  color: black;
+  border-radius: 5px;
+  height: 70%;
+  text-align: center;
+}
+
+.maxBoundPhoto {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.photoCardResize {
+  border: 0px solid;
+  border-radius: 25%;
+  width: 200%;
+  margin: auto;
+  background-color: white;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
+  height: 125%;
+}
+
 .LargeImage {
-  margin-top: 10%;
+  margin-bottom: 10%;
+  padding-left: 15% !important;
+  padding-right: 15% !important;
+}
+
+.LargeImage .flickity-button {
+  height: 10% !important;
 }
 
 .setImgLarge {
-  padding-right: 40%;
-  right: 30%;
-  top: 0;
-  left: 20%;
+  width: inherit;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
 }
 
 .priceForm {
@@ -471,7 +561,7 @@ select {
   margin-bottom: 10%;
 }
 
-.priceFormItem{
+.priceFormItem {
   margin-bottom: 1.5%;
 }
 
@@ -500,20 +590,24 @@ select {
 }
 
 #my-modal-image {
-  width: 100%;
   border-radius: 25px;
   margin: auto;
   border: none !important;
-  background: none !important;
   margin-top: 20% !important;
 }
 
-.modal-my-image{
-  margin-top: 5% !important;
+.modal-my-image {
+  margin-top: 6% !important;
+  max-width: 50% !important;
 }
 
-.flickity-button{
+.modal-my-image-mobile {
+  max-width: 100% !important;
+}
 
+.modal-content-fix {
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .registerFormCash {
@@ -527,7 +621,7 @@ select {
 }
 
 .visaInput {
-  width: 90%;
+  width: 92%;
   padding-bottom: 4%;
   padding-top: 2%;
   background-color: rgb(247, 247, 247);
@@ -535,63 +629,73 @@ select {
   border: none;
   border-radius: 5px;
   margin-bottom: 7%;
+  padding-left: 2%;
 }
 
 #dropdownDateYear {
-  border-radius: 5px 15px 15px 5px;
+  border-radius: 0px 10px 10px 0px;
   width: 30%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   text-align: center;
   background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   margin-bottom: 7%;
   margin-right: 1%;
+  border: none;
 }
 #dropdownDateMonth {
   width: 30%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   text-align: center;
   background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   margin-bottom: 7%;
   margin-right: 1%;
+  border: none;
 }
 #dropdownDateDay {
-  border-radius: 15px 5px 5px 15px;
+  border-radius: 10px 0px 0px 10px;
   width: 30%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   text-align: center;
   background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   margin-bottom: 7%;
   margin-right: 1%;
+  border: none;
+}
+
+.day {
+  border: none;
 }
 
 .min {
-  border-radius: 5px 15px 15px 5px;
-  width: 30%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  border-radius: 0px 10px 10px 0px;
+  width: 45%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   text-align: center;
   background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   margin-bottom: 7%;
   margin-right: 1%;
+  border: none;
 }
 
 .hour {
-  border-radius: 15px 5px 5px 15px;
-  width: 30%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  border-radius: 10px 0px 0px 10px;
+  width: 45%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   text-align: center;
   background-color: rgb(247, 247, 247);
   color: rgb(170, 169, 196);
   margin-bottom: 7%;
   margin-right: 1%;
+  border: none;
 }
 
 .titleformvisa {
@@ -603,7 +707,6 @@ select {
 }
 
 .buttonVisa {
-  margin-top: 25%;
   margin-left: 1%;
   margin-bottom: 5%;
   background-color: rgb(105, 31, 255);
@@ -612,10 +715,26 @@ select {
   padding-top: 3.5%;
   padding-bottom: 3.5%;
   border-radius: 25px;
+  border: none;
+}
+
+.plus {
+  color: white;
+  font-size: 30px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .visaInput:focus {
   background-color: white;
   color: black;
   border: 1px solid rgb(105, 31, 255);
+}
+
+.IconMessageSubmit {
+  margin-top: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

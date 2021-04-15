@@ -5,6 +5,15 @@ import Header from "./Header.js";
 import Footer from "./Footer.js";
 
 export default class AboutUs extends React.Component {
+  
+  componentDidMount() {
+    if (localStorage.getItem("ShoppingItems") == "[]") {
+      document.getElementById("redDotShopItem").style.display = "none";
+    } else {
+      document.getElementById("redDotShopItem").style.display = "inline-block";
+    }
+  }
+
   render() {
     return (
       <Fragment>

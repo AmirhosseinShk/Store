@@ -37,40 +37,18 @@
       color: white;
   }
 
-  #MessageSuccessfully{
-    height: 80%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 10%;
-    right: 35%;
-    border-radius: 25px;
-      overflow-x: hidden;
-      transition: 0.5s;
-    background-color: rgb(255, 255, 255);
-  }
-
-  #blur   {
-    filter:brightness(200%);
-      -webkit-filter: blur(8px);
-      -moz-filter: blur(8px);
-      -o-filter: blur(8px);
-      -ms-filter: blur(8px);
-      
+  .topMarg{
+    margin-top: 5% !important;
   }
 
   .pMessage{
-      margin-left: 30%;
+      margin-left:25%;
       padding-left: 10%;
       padding-right: 30%;
+      padding-bottom: 30%;
   }
 
   .IconMessage{
-      margin-top: 25%;
+      margin-top: 30%;
       margin-left: 42%;
-  }
-
-  .shadowbackground{
-    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.6), 8px 6px 20px 50px rgba(0, 0, 0, 0.19);
-    
   }

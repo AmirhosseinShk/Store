@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68" height="68" viewBox="0 0 68 68">
+  <defs>
+    <clipPath id="clip-X_vertical_menu">
+      <rect width="68" height="68"/>
+    </clipPath>
+  </defs>
+  <g id="X_vertical_menu" data-name="X vertical menu" clip-path="url(#clip-X_vertical_menu)">
+    <g id="Group_175" data-name="Group 175" transform="translate(-15.122 -15)">
+      <g id="Group_18" data-name="Group 18" transform="translate(49.022 18.065) rotate(45)">
+        <line id="Line_4" data-name="Line 4" x2="43.982" transform="translate(0 21.991)" fill="none" stroke="#a5a7af" stroke-linecap="round" stroke-width="3"/>
+        <line id="Line_5" data-name="Line 5" x2="43.982" transform="translate(21.991 43.982) rotate(-90)" fill="none" stroke="#a5a7af" stroke-linecap="round" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -11,35 +11,14 @@ export default class AskQuestion extends React.Component {
     this.state = {
       isOpen: false,
     };
-    this.OpenMessage = this.OpenMessage.bind(this);
   }
 
-  OpenMessage(event) {
-    // console.log(event.target.value);
-    if (event.target.value == "bsubmitt") {
-      this.setState({ isOpen: true });
-      var x = document.getElementsByClassName("header")[0];
-      x.setAttribute("id", "blur");
-      var x = document.getElementsByClassName("main")[0];
-      x.setAttribute("id", "blur");
-      var x = document.getElementsByClassName("MainFooter")[0];
-      x.setAttribute("id", "blur");
-      document.getElementById("MessageSuccessfully").style.width = "35%";
-      document
-        .getElementById("MessageSuccessfully")
-        .setAttribute("class", "shadowbackground");
-      // console.log(this.state.isOpen);
+  componentDidMount() {
+    if (localStorage.getItem("ShoppingItems") == "[]") {
+      document.getElementById("redDotShopItem").style.display = "none";
     } else {
-      var x = document.getElementsByClassName("header")[0];
-      x.setAttribute("id", "");
-      var x = document.getElementsByClassName("main")[0];
-      x.setAttribute("id", "");
-      var x = document.getElementsByClassName("MainFooter")[0];
-      x.setAttribute("id", "");
-      document.getElementById("MessageSuccessfully").style.width = "0";
-      document.getElementById("MessageSuccessfully").setAttribute("class", "");
+      document.getElementById("redDotShopItem").style.display = "inline-block";
     }
-    event.preventDefault();
   }
 
   render() {
@@ -47,7 +26,7 @@ export default class AskQuestion extends React.Component {
       <Fragment>
         <Header></Header>
         <div>
-          <div className="main" onClick={this.OpenMessage}>
+          <div className="main">
             <div className="row">
               <div className="col-sm-4">
                 <img
@@ -70,26 +49,54 @@ export default class AskQuestion extends React.Component {
                   cols="23"
                 ></textarea>
                 <button
-                  clclassNameass="submitButton"
+                  className="submitButton"
                   value="bsubmitt"
-                  on
-                  onClick={this.OpenMessage}
+                  data-toggle="modal"
+                  data-target="#submitComment"
+                  data-dismiss="modal"
                 >
                   представить
                 </button>
               </div>
             </div>
           </div>
-          <div id="MessageSuccessfully">
-            <img
-              className="IconMessage"
-              src={IconChecked}
-              alt="ok"
-              height="200"
-              width="100"
-            ></img>
-            <div class="row">
-              <p class="pMessage">Ваш запрос был отправлено успешно</p>
+          <div
+            class="modal fade"
+            id="submitComment"
+            tabindex="-2"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog topMarg" role="document">
+              <div class="modal-content" id="my-modal">
+                <div>
+                  <button
+                    type="button"
+                    class="close setsizetimes"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span class="times" aria-hidden="true">
+                      &times;
+                    </span>
+                  </button>
+                  <div>
+                    <img
+                      className="IconMessage"
+                      src={IconChecked}
+                      alt="ok"
+                      height="200"
+                      width="100"
+                    ></img>
+                    <div class="row">
+                      <p class="pMessage text-center">
+                        Ваш запрос был отправлено успешно
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

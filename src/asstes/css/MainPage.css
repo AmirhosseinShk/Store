@@ -70,7 +70,7 @@
 }
 
 #shopCardImage {
-  width: 100% ;
+  width: 100%;
 }
 
 #shopCardName {
@@ -96,10 +96,37 @@
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   background-color: #651fff;
+  border: none;
+}
+
+.closeicon {
+  color: white;
+  font-size: 30px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.plus {
+  color: white;
+  font-size: 30px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 #titleCategories {
   margin-top: 15%;
   font-size: 1.3vw;
   color: rgb(165, 169, 196);
+}
+
+#carouselExampleIndicators {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+
+.Sildeheight {
+  height: 300px;
 }

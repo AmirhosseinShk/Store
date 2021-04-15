@@ -9,6 +9,7 @@ body {
   font-weight: 200;
   min-height: 100%;
   height: auto;
+  padding-right: 0 !important;
 }
 
 .deleteUnderLink {
@@ -92,7 +93,57 @@ select#sizeList {
   outline: 0px;
 }
 
+/* pretty radio */
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + *::before {
+  content: "";
+  display: inline-block;
+  vertical-align: bottom;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.3rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: rgb(0, 0, 0);
+}
+
+input[type="radio"]:checked {
+  color: rgb(111, 32, 254);
+}
+
+input[type="radio"]:checked + *::before {
+  background: radial-gradient( rgb(111, 32, 254) 0%,  rgb(111, 32, 254) 40%, transparent 50%, transparent);
+  border-color:  rgb(111, 32, 254);
+}
+
+/* basic layout */
+fieldset {
+  margin: 20px;
+  max-width: 400px;
+}
+label > input[type="radio"] + * {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
 @media (max-width: 978px) {
+  .noresultimg {
+    display: block !important;
+    margin: auto !important;
+  }
+
+  .noresultText {
+    text-align: center !important;
+    margin-left: 0 !important ;
+  }
+
+  .ShowMenu {
+    padding-left: 15%;
+  }
   .container {
     padding: 0;
     margin: 0;
@@ -100,6 +151,10 @@ select#sizeList {
 
   .header {
     width: auto;
+  }
+
+  .redDot{
+    font-size: 3vw !important;
   }
 
   .headerImage {
@@ -116,7 +171,11 @@ select#sizeList {
   }
 
   .SearchButton {
-    width: auto;
+    width: 70%;
+  }
+
+  .searchBorder {
+    margin-left: 4%;
   }
 
   .margintop-sm {
@@ -131,11 +190,25 @@ select#sizeList {
     margin-left: 100% !important;
   }
 
-  .addPrice{
+  .addPrice {
     margin-right: 0 !important;
+    padding-top: 4% !important;
   }
 
-  .marginTopResult{
+  .makeStyles-root-5 {
+    width: auto !important;
+  }
+
+  .priceSubmit {
+    margin-top: 10% !important;
+    margin-left: 5% !important;
+  }
+
+  .paging {
+    margin-left: 30% !important;
+  }
+
+  .marginTopResult {
     margin-top: 10%;
   }
 
@@ -144,8 +217,8 @@ select#sizeList {
   }
 
   .cardMarginProduct {
-    margin-top: 10% !important;
-    margin-bottom: 10% !important;
+    margin-top: 5% !important;
+    margin-bottom: 0% !important;
   }
 
   .productText {
@@ -205,6 +278,15 @@ select#sizeList {
     color: white;
   }
 
+  .closebutton {
+    width: 10% !important;
+    height: 15% !important;
+  }
+
+  .modal-my-image {
+    max-width: 100% !important;
+  }
+
   .flickity-button {
     border: 1px solid #fff !important;
     background: #efeeee !important;
@@ -228,11 +310,12 @@ select#sizeList {
   }
 
   #titleCategories {
-    font-size: 10vw !important;
+    font-size: 4vw !important;
+    padding-bottom: 10%;
   }
 
   #iconCenter {
-    font-size: 20vw !important;
+    font-size: 10vw !important;
   }
 
   #SpaceFooter {
@@ -245,11 +328,44 @@ select#sizeList {
     margin-left: 0;
   }
 
-  .setcolor {
-    height: auto !important;
+  #shopCardButton {
+    margin-left: 0 !important;
   }
 
-  .order{
+  #my-modal-image {
+    margin-left: 10% !important;
+  }
+
+  .subPhoto {
+    width: 200%;
+    height: 130%;
+  }
+
+  .setBrand {
+    margin-top: 0 !important;
+  }
+
+  .buttonImg {
+    width: auto !important;
+    right: 5% !important;
+    top: 50% !important;
+  }
+
+  .paymentMethod {
+    margin-left: 5% !important;
+    margin-top: 0 !important;
+  }
+
+  .button_price {
+    background-color: white;
+  }
+
+  .setcolor {
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .order {
     width: 40% !important;
   }
 }

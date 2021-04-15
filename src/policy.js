@@ -5,6 +5,14 @@ import IconAboutUs from "./asstes/svg/Asset3.svg";
 import "./asstes/css/policy.css";
 
 export default class Policy extends React.Component {
+  componentDidMount() {
+    if (localStorage.getItem("ShoppingItems") == "[]") {
+      document.getElementById("redDotShopItem").style.display = "none";
+    } else {
+      document.getElementById("redDotShopItem").style.display = "inline-block";
+    }
+  }
+
   render() {
     return (
       <Fragment>

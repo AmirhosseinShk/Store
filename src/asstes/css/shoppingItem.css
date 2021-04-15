@@ -49,6 +49,7 @@
     border-bottom-right-radius: 25px;
     background-color:rgb(255, 0, 94);
     color: white;
+    border: none;
   }
 
   .cardMargin{
@@ -65,4 +66,5 @@
     background-color: rgb(111, 32, 254);
     border-color: rgb(111, 32, 254);
     color: white;
+    border: none;
   }

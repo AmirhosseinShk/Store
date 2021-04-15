@@ -9,16 +9,13 @@ const useStyles = makeStyles({
   },
 });
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
-export default function RangeSlider() {
+export default function RangeSlider(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    props.handleChangeSideBar(newValue);
   };
 
   return (
@@ -31,9 +28,8 @@ export default function RangeSlider() {
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
-        getAriaValueText={valuetext}
         min={0}
-        max={60000}
+        max={props.maxPrice}
       />
     </div>
   );

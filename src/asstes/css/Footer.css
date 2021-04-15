@@ -16,14 +16,14 @@
 }
 
 .information {
-  margin-left: 7%;
+  margin-left: 9%;
 }
 
 .information2 {
-  margin-left: 4%;
+  margin-left: 3%;
 }
 
-.information3{
+.information3 {
   margin-left: 2%;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .headerOfFooter {
-  color: #651FFF; 
+  color: #651fff;
   font-weight: bold;
   font-family: IRANSans;
 }
@@ -46,4 +46,19 @@
 
 .line {
   margin-bottom: 2%;
+}
+
+.marginItems {
+  margin-top: 15%;
+}
+
+.ShowFooter {
+  padding-left: 10%;
+}
+
+#information {
+  font-size: 18px;
+  margin-top: 10%;
+  padding-bottom: 10%;
+  margin-left: 6%;
 }

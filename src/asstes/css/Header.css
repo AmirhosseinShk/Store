@@ -11,10 +11,6 @@
   margin-left: 1%;
 }
 
-#border{
-  height: 100%;
-}
-
 .searchBorder {
   margin-left: 7%;
   margin-top: 1%;
@@ -42,6 +38,7 @@
   margin-left: 10%;
   border-radius: 20px;
   background-color: #651fff;
+  border: none;
 }
 
 #SearchButtonicon {
@@ -52,10 +49,11 @@
 
 .MenuBar {
   font-size: 14px;
+  width: inherit;
 }
 
-#MenuItem{
-	border: none;
+#MenuItem {
+  border: none;
   background: none;
   margin-left: 7%;
 }
@@ -73,11 +71,20 @@
   margin: auto;
 }
 
+.redDot {
+  color: red;
+  margin-left: 55%;
+  font-size: 0.8vw;
+  position: absolute;
+  top: 1%;
+}
+
 .closebtn {
-  margin-top: 10%;
-  margin-left: 82%;
+  margin-top: 7%;
+  margin-left: 80%;
   color: black;
-  font-size: 20px;
+  font-size: 4vw;
+  position: relative;
 }
 
 #blur {
